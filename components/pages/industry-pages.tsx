@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Crumbs } from "@/components/ui/crumbs";
-import { PageIntro } from "@/components/ui/page-intro";
+import { IndustriesHero } from "@/components/pages/industries-hero";
 import { Closing } from "@/components/ui/closing";
 import { ButtonLink } from "@/components/ui/links";
 import { Reveal } from "@/components/motion/reveal";
@@ -13,19 +13,8 @@ import s from "./industry-pages.module.css";
 export function IndustriesLanding() {
   return (
     <>
-      <PageIntro
-        crumbs={[{ label: "Industries" }]}
-        eyebrow="Industries"
-        title="Expertise in your context."
-        lead="Different sectors bring different risks, responsibilities and opportunities. Explore how our capabilities support your industry."
-        aside={
-          <p className={s.count} aria-hidden="true">
-            <span className="num">06</span>
-            <span>sectors</span>
-          </p>
-        }
-      />
-      <section className="sec" aria-label="Sectors">
+      <IndustriesHero />
+      <section id="sectors" className="sec" aria-label="Sectors">
         <ul className={`container ${s.mosaic}`}>
           {industries.map((item, i) => {
             const v = industryVisuals[item.slug];

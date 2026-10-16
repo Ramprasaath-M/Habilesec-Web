@@ -4,9 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { serviceCategories } from "@/data/service-categories";
+import { ServicesMenu } from "./services-menu";
 import { products } from "@/data/site";
-import { serviceVisuals } from "@/data/visuals";
 import { TextLink } from "@/components/ui/links";
 import s from "./header.module.css";
 
@@ -27,8 +26,6 @@ export function Header() {
   const [openId, setOpenId] = useState<MenuId | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [previewIdx, setPreviewIdx] = useState(0);
-  const [everOpened, setEverOpened] = useState(false);
 
   function closeAll() {
     window.clearTimeout(hoverTimer.current);
@@ -37,7 +34,6 @@ export function Header() {
   }
   function openMenu(id: MenuId | null) {
     setOpenId(id);
-    if (id === "services") setEverOpened(true);
   }
 
   useEffect(() => {
@@ -126,50 +122,9 @@ export function Header() {
           aria-label={label}
         >
           <div className={s.panelClip}>
-            <div className={`container ${s.panelInner}`}>
+            <div className={`container ${s.panelInner} ${id === "services" ? s.panelFlat : ""}`}>
               {id === "services" ? (
-                <>
-                  <div className={s.panelIntro}>
-                    <p className="eyebrow">What we do</p>
-                    <p className={`serif-3 ${s.panelTitle}`}>
-                      Five disciplines. Three practices. One connected model.
-                    </p>
-                    <TextLink href="/what-we-do">All services</TextLink>
-                  </div>
-                  <ul className={s.panelList}>
-                    {serviceCategories.map((c, i) => (
-                      <li key={c.slug}>
-                        <Link
-                          href={`/what-we-do/${c.slug}`}
-                          onClick={closeAll}
-                          onPointerEnter={() => setPreviewIdx(i)}
-                          onFocus={() => setPreviewIdx(i)}
-                          data-current={previewIdx === i || undefined}
-                        >
-                          <span className={`num ${s.panelNum}`}>{c.number}</span>
-                          <span>
-                            <strong>{c.name}</strong>
-                            <small>{c.description}</small>
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className={s.preview} aria-hidden="true">
-                    {everOpened &&
-                      serviceCategories.map((c, i) => (
-                        <Image
-                          key={c.slug}
-                          src={serviceVisuals[c.slug].src}
-                          alt=""
-                          fill
-                          sizes="320px"
-                          data-on={previewIdx === i || undefined}
-                          style={{ objectPosition: serviceVisuals[c.slug].pos }}
-                        />
-                      ))}
-                  </div>
-                </>
+                <ServicesMenu onNavigate={closeAll} />
               ) : (
                 <>
                   <div className={s.panelIntro}>

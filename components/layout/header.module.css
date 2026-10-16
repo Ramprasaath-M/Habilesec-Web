@@ -254,6 +254,10 @@
     padding: 40px var(--gutter) 44px !important;
     max-width: var(--container);
   }
+  .panelFlat {
+    display: block;
+    padding-block: 32px 36px !important;
+  }
   .panelIntro {
     display: flex;
     flex-direction: column;
