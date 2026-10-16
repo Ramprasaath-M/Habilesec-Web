@@ -1,0 +1,30 @@
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.crumbs li {
+  display: inline-flex;
+  align-items: center;
+}
+.crumbs li + li::before {
+  content: "/";
+  margin-inline: 10px;
+  color: var(--line-strong);
+}
+.crumbs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  transition: color var(--t-micro) var(--ease);
+}
+.crumbs a:hover {
+  color: var(--blue);
+}
+.crumbs [aria-current] {
+  color: var(--ink);
+  font-weight: 600;
+}

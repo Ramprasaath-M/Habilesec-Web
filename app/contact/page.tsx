@@ -1,4 +1,4 @@
-import { ContactPage } from "@/components/enterprise/pages";
+import { ContactPage } from "@/components/pages/company-pages";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Contact",

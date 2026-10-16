@@ -1,4 +1,4 @@
-import { ServicesLanding } from "@/components/enterprise/pages";
+import { ServicesLanding } from "@/components/pages/service-pages";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "What We Do",

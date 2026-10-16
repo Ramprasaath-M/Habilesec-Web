@@ -1,4 +1,4 @@
-import { InsightsLanding } from "@/components/enterprise/pages";
+import { InsightsLanding } from "@/components/pages/insight-pages";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Insights",

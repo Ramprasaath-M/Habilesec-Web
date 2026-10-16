@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { company } from "@/data/site";
+import s from "./contact-form.module.css";
 const enquiryTypes = [
   "Cybersecurity",
   "Compliance / GRC",
@@ -15,7 +16,7 @@ export function ContactForm() {
   const [emailLink, setEmailLink] = useState("");
   return (
     <form
-      className="contact-form"
+      className={s.form}
       onChange={() => setEmailLink("")}
       onSubmit={(event) => {
         event.preventDefault();
@@ -41,12 +42,12 @@ export function ContactForm() {
         );
       }}
     >
-      <div className="form-grid">
+      <div className={s.grid}>
         <Field label="Name" name="name" required />
         <Field label="Business email" name="email" type="email" required />
         <Field label="Company" name="company" />
         <Field label="Phone" name="phone" type="tel" />
-        <label className="form-field wide">
+        <label className={`${s.field} ${s.wide}`}>
           What would you like to discuss?
           <select name="reason">
             {enquiryTypes.map((type) => (
@@ -54,19 +55,19 @@ export function ContactForm() {
             ))}
           </select>
         </label>
-        <label className="form-field wide">
+        <label className={`${s.field} ${s.wide}`}>
           Your message *
           <textarea name="message" required maxLength={2000} rows={5} />
         </label>
       </div>
-      <button className="site-button button-primary mt-8" type="submit">
+      <button className={`btn ${s.submit}`} type="submit">
         Prepare enquiry
         <ArrowRight size={18} />
       </button>
       {emailLink && (
-        <div className="form-result" role="status">
+        <div className={s.result} role="status">
           <p>Your enquiry is ready to send by email.</p>
-          <a className="arrow-link" href={emailLink}>
+          <a className="tlink" href={emailLink}>
             Open email draft
             <ArrowRight size={18} />
           </a>
@@ -87,7 +88,7 @@ function Field({
   required?: boolean;
 }) {
   return (
-    <label className="form-field">
+    <label className={s.field}>
       {label}
       {required ? " *" : ""}
       <input

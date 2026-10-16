@@ -1,63 +1,44 @@
-# HabileSec design system
+# HabileSec design system (redesign)
 
-The rebuilt frontend is an original, light enterprise design. It favors clear business language, editorial photography, thin rules, and useful disclosure over decorative cards and animation.
+Light theme only. Tokens live in `app/globals.css`; section and page compositions live in CSS modules beside their components. The previous version of this document described the earlier minimal build; this one replaces it.
 
-## Foundations
+## Principles
 
-Tokens live in `app/globals.css`. Tailwind's named colors resolve to the same variables.
+- Premium, editorial, light: white, warm ivory, cool mist and a pale blue tint. Navy is used for buttons and text, never as a section background. No dark footer.
+- One restrained accent (ember, taken from the logo) for markers, active states and the final full stop of the hero headline.
+- Every major section has its own composition and interaction; consistency comes from type, tokens, rules and motion, not from repeating a layout.
+- Motion explains something (selection, progress, depth) and respects `prefers-reduced-motion`.
 
-| Role | Token / value |
-| --- | --- |
-| Background | `--background`: #FFFFFF |
-| Alternate surface | `--surface`: #F7F8FA |
-| Primary text | `--text`: #17212B |
-| Secondary text | `--secondary`: #52606D |
-| Border | `--border`: #E3E7EB |
-| Brand navy | `--navy`: #123B63 |
-| Accent | `--accent`: #2874A6 |
+## Tokens
 
-Navy is used for brand emphasis and controls, not large dark surfaces. Photography sits inside light layouts. The original HabileSec logo is copied without changing its proportions or identity.
+| Role | Token | Value |
+| --- | --- | --- |
+| Surfaces | `--paper` `--ivory` `--mist` `--tint` `--sand` | #fff · #faf8f4 · #f3f6f9 · #e9f1f8 · #f3ede2 |
+| Text | `--ink` `--body` `--muted` | #0f2033 · #394859 · #566475 |
+| Rules | `--line` `--line-strong` | #dde2e8 · #c3ccd6 |
+| Brand | `--navy` `--blue` `--ember` | #123b63 · #1b5a8c · #b8482a |
+| Decorative numerals | `--ghost` | #5f8fb9 (≥3.2:1 on every surface) |
+| Container | `--container` / `--gutter` | 1320px · clamp(20px, 4vw, 56px) |
+| Section rhythm | `--sec-compact` / `--sec` / `--sec-spacious` | clamp 40–64 / 56–88 / 72–120px |
+| Motion | `--t-micro` `--t-content` `--t-image` · `--ease` | 180 / 380 / 640ms · cubic-bezier(.22,1,.36,1) |
 
 ## Typography
 
-Manrope is hosted locally through `next/font/local`, with Segoe UI and Arial fallbacks. Its existing SIL Open Font License remains in `public/fonts/manrope-OFL.txt`. No font requests go to Google.
+- Display and headings: **DM Serif Display** (400, local file). Interface and body: **Manrope** (local).
+- `.display` clamp(46–100px)/1.0 · `h1` clamp(40–76px)/1.04 · `h2` clamp(32–54px)/1.08 · `.serif-3` clamp(26–36px) · `h3` Manrope 700 19–22px · `.lead` 18–21px/1.6 · body 17px/1.7 · eyebrow 13px/700 caps +0.14em with an ember rule · caption 14px.
+- No text below 12px (verified by an automated check across routes and widths).
 
-| Role | Scale |
-| --- | --- |
-| Homepage H1 | 40–72px, weight 500, line height 1.1 |
-| Inner-page H1 | 36–64px, weight 500 |
-| Section H2 | 28–44px, weight 500, line height 1.2 |
-| Card H3 | 20–25px, weight 500, line height 1.35 |
-| Body | 16–18px, line height 1.65–1.85 |
-| Navigation and links | 14–15px, weight 500–600 |
-| Eyebrows | 11–12px, weight 600, restrained uppercase tracking |
+## Components and primitives
 
-Every public content page has one H1. Paragraphs have readable maximum widths. Optional desktop line breaks disappear on small screens.
+- `components/layout/` header (sticky, mega panels with preview, mobile drawer) and a single light footer.
+- `components/ui/` `ButtonLink`/`TextLink`, `Closing` (contextual closing section), `PageIntro`, `Crumbs`, `ProductPlate`, `ArticleLink`, `Presence`, `use-tabs` (roving tabindex).
+- `components/motion/reveal.tsx`: scroll reveal (`rise`, `fade`, `mask`, `line`, `grow`). Content stays visible without JS and on first paint; only below-the-fold elements are hidden, and never under reduced motion.
+- Homepage sections in `components/home/`; page families in `components/pages/`.
 
-## Layout and spacing
+## Page families
 
-Use `.container`, `.section`, `.section-head`, and `.split-section`. The outer container is capped at 1360px including gutters; its content width is about 1264px. Gutters scale from 20 to 48px. Section spacing scales from 56 to 104px. Spacing follows 4px and 8px increments.
-
-Layouts reflow at 1100, 800, and 480px where their content requires it. Reflow is also checked at the equivalent 640px and 320px layouts for 200% and 400% zoom on a 1280px desktop. Images use aspect ratios; text-bearing containers have natural heights.
-
-## Components
-
-- `components/enterprise/header.tsx`: approved six-item navigation, native disclosure menus, mobile toggle, Escape and outside-click dismissal.
-- `shared.tsx`: section headings, page heroes, buttons, text links, and contact CTA.
-- `interactive.tsx`: challenge and service disclosures, product selector, industry selector, perspective filters.
-- `home.tsx`: the eight homepage sections in the requested order.
-- `pages.tsx`: consistent service, practice, product, sector, editorial, company, and contact templates.
-- `footer.tsx`: light footer with local legal destinations and verified contact information.
-- `components/sections/contact-form.tsx`: preserved email-draft workflow, native validation, and bounded input lengths.
-
-Small 4px image corners, 2px control corners, and thin borders are the default. Shadows are limited to the navigation dropdown. Plus icons indicate disclosure; arrows indicate navigation. Icons are not used as decoration.
+Service (editorial split hero, index, stepper) · Practice (wordmark, method line, groups, lifecycle) · Product (mist hero with capability plate) · Industry (banner with overlapping caption, contrast columns) · Insights (masthead, filter, featured + staggered grid; article with sticky index) · About (statement, mission/vision, principles, founders, presence) · Contact (details + form, minimal).
 
 ## Interaction and accessibility
 
-Native `<details>` elements provide progressive disclosure without hover dependence. Buttons use `aria-pressed` for product, sector, and filter selection; results have live announcements. Links and form controls retain visible focus indicators. Controls generally provide 44–48px targets; compact footer links exceed the WCAG 2.2 minimum target height.
-
-Motion is limited to short content entrances, icon states, and subtle image emphasis. Reduced-motion preferences disable transitions and animated scrolling. There is no autoplay video, parallax, animated background, flip animation, or scroll-dependent content reveal.
-
-## Reference principles
-
-The information structures of [Grant Thornton](https://www.grantthornton.global/en/), [UBS](https://www.ubs.com/), [Deloitte](https://www.deloitte.com/), [PwC](https://www.pwc.com/), [KPMG](https://kpmg.com/xx/en.html), and [DXC](https://dxc.com/) were reviewed for clear capability navigation, sector context, editorial content, and contact paths. The resulting visual system and implementation are original; no reference-site code, illustrations, or branding were copied.
+Native buttons, links and tab roles; arrow-key navigation on tablists; visible focus; skip link; hover is never the only way to reach content (tiles also open on focus and tap; below 960px all tile content is visible). The contact form remains a `mailto:` draft.

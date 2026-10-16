@@ -1,4 +1,4 @@
-import { IndustriesLanding } from "@/components/enterprise/pages";
+import { IndustriesLanding } from "@/components/pages/industry-pages";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Industries",

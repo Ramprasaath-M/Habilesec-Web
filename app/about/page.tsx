@@ -1,4 +1,4 @@
-import { AboutPage } from "@/components/enterprise/pages";
+import { AboutPage } from "@/components/pages/company-pages";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "About HabileSec",

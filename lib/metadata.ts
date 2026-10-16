@@ -16,8 +16,8 @@ export function pageMetadata(
       type: "website",
       images: [
         {
-          url: "/media/business-advisory.webp",
-          alt: "Professionals discussing business strategy",
+          url: "/images/habilesec-difference/ascending-staircase.webp",
+          alt: "A professional climbing a white staircase toward an open door filled with sunlight",
         },
       ],
     },
@@ -25,7 +25,7 @@ export function pageMetadata(
       card: "summary_large_image",
       title: `${title} | HabileSec`,
       description,
-      images: ["/media/business-advisory.webp"],
+      images: ["/images/habilesec-difference/ascending-staircase.webp"],
     },
   };
 }

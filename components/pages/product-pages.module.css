@@ -1,0 +1,196 @@
+.count {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font: 700 13px/1.3 var(--font-ui);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.count :global(.num) {
+  font-size: clamp(80px, 11vw, 160px);
+  line-height: 0.9;
+  letter-spacing: 0;
+  color: var(--ghost);
+}
+.logo {
+  width: auto;
+  height: 38px;
+  margin-bottom: 4px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 28px;
+  margin-top: 8px;
+}
+
+/* Landing feature rows */
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+.featureText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.featureName {
+  font-size: clamp(48px, 5.6vw, 84px);
+}
+.featureSummary {
+  max-width: 24ch;
+}
+.featureIntro {
+  max-width: 46ch;
+  font-size: 16px;
+}
+.featureVisual {
+  min-width: 0;
+}
+
+/* Certanika / related */
+.cert {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+.certTitle {
+  margin-block: 16px 20px;
+  font-size: clamp(32px, 3.6vw, 50px);
+  max-width: 14em;
+}
+.certLead {
+  margin-bottom: 20px;
+}
+.certList {
+  border-top: 2px solid var(--ink);
+}
+.certList li {
+  position: relative;
+  padding: 18px 0 18px 28px;
+  border-bottom: 1px solid var(--line-strong);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink);
+}
+.certList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 29px;
+  width: 8px;
+  height: 8px;
+  background: var(--ember);
+}
+
+/* Detail hero */
+.hero {
+  padding-block: clamp(16px, 2vw, 24px) clamp(48px, 6vw, 88px);
+  border-bottom: 1px solid var(--line);
+}
+.heroGrid {
+  margin-top: clamp(24px, 3.4vw, 48px);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+.heroText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  animation: in 800ms var(--ease) both;
+}
+.heroTitle {
+  font-size: clamp(52px, 7vw, 104px);
+  line-height: 1;
+}
+.heroLead {
+  max-width: 34ch;
+}
+.heroVisual {
+  min-width: 0;
+  animation: in 900ms var(--ease) 160ms both;
+}
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Capabilities */
+.capGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 5vw, 96px);
+  align-items: start;
+}
+.capIntro {
+  position: sticky;
+  top: calc(var(--header-h) + 32px);
+}
+.capTitle {
+  margin-block: 16px 20px;
+  font-size: clamp(32px, 3.6vw, 50px);
+  max-width: 12em;
+}
+.capCopy {
+  max-width: 44ch;
+  font-size: 17px;
+}
+.capList {
+  border-top: 2px solid var(--ink);
+}
+.capList li {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  min-height: 92px;
+  border-bottom: 1px solid var(--line-strong);
+}
+.capNum {
+  font-size: 34px;
+}
+.capName {
+  font-size: clamp(24px, 2.4vw, 34px);
+}
+
+.begin {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(24px, 5vw, 80px);
+  align-items: start;
+}
+.beginTitle {
+  font-size: clamp(30px, 3.2vw, 46px);
+  max-width: 12em;
+}
+.beginLink {
+  margin-top: 16px;
+}
+
+@media (max-width: 1023px) {
+  .feature,
+  .cert,
+  .heroGrid,
+  .capGrid,
+  .begin {
+    grid-template-columns: 1fr;
+  }
+  .capIntro {
+    position: static;
+  }
+}

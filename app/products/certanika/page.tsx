@@ -1,4 +1,4 @@
-import { CertanikaDetail } from "@/components/enterprise/pages";
+import { CertanikaDetail } from "@/components/pages/product-pages";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Certanika",

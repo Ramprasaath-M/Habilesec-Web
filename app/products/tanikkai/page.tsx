@@ -1,4 +1,4 @@
-import { PlatformDetail } from "@/components/enterprise/pages";
+import { PlatformDetail } from "@/components/pages/product-pages";
 import { platformProducts } from "@/data/enterprise";
 import { pageMetadata } from "@/lib/metadata";
 const item = platformProducts.find((p) => p.slug === "tanikkai")!;

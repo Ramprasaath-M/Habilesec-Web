@@ -1,4 +1,4 @@
-import { IndustryDetail } from "@/components/enterprise/pages";
+import { IndustryDetail } from "@/components/pages/industry-pages";
 import { industries } from "@/data/site";
 import { notFound } from "next/navigation";
 import { pageMetadata } from "@/lib/metadata";

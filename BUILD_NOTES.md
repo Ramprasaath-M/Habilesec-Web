@@ -1,4 +1,4 @@
-﻿# HabileSec enterprise frontend
+# HabileSec enterprise frontend
 
 This working project is independent of the read-only HabileSec Ex reference repository.
 
@@ -8,7 +8,7 @@ This working project is independent of the read-only HabileSec Ex reference repo
 - Production: `npm.cmd run build`, then `npm.cmd run start -- --port 3300`
 - Checks: `npm.cmd run lint` and `npm.cmd run typecheck`
 
-The runtime stack is Next.js App Router, TypeScript, React, Tailwind, locally hosted Manrope, and Lucide React. Framer Motion and the obsolete experimental UI have been retired.
+The runtime stack is Next.js App Router, TypeScript, React, Tailwind (token aliases only), locally hosted Manrope and DM Serif Display, and Lucide React. Motion is CSS plus two small client primitives (`components/motion/reveal.tsx`, scroll/tab handlers); no animation library is installed.
 
 ## Implementation and review
 
@@ -17,7 +17,7 @@ The runtime stack is Next.js App Router, TypeScript, React, Tailwind, locally ho
 - [Content requiring business review](CONTENT_REVIEW.md)
 - [Asset and business-content provenance](ASSET_SOURCES.md)
 
-Application components live in `components/enterprise/`; the preserved email-draft form is in `components/sections/contact-form.tsx`. Shared tokens live in `app/globals.css`. New presentation content lives in `data/enterprise.ts`, alongside the retained company, practice and service data.
+Components: `components/layout/` (header, footer), `components/home/` (homepage sections), `components/pages/` (page families), `components/ui/` and `components/motion/` (primitives). The preserved email-draft form is `components/sections/contact-form.tsx`. Tokens are in `app/globals.css`; compositions are CSS modules beside each component. Image art direction is in `data/visuals.ts`; see `DESIGN_SYSTEM.md` and `ASSET_INVENTORY.md`.
 
 The frontend prepares enquiries as email drafts. It does not claim server-side message delivery, and no credentials or backend integrations were invented.
 

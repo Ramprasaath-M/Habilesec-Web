@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Header } from "@/components/enterprise/header";
-import { SiteFooter } from "@/components/enterprise/footer";
+import { Header } from "@/components/layout/header";
+import { SiteFooter } from "@/components/layout/footer";
+
 const manrope = localFont({
   src: "../public/fonts/manrope.ttf",
   display: "swap",
   variable: "--font-manrope",
   weight: "200 800",
 });
+const dmSerif = localFont({
+  src: "../public/fonts/dm-serif-display.ttf",
+  display: "swap",
+  variable: "--font-dm-serif",
+  weight: "400",
+  adjustFontFallback: "Times New Roman",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.habilesec.com"),
   title: {
@@ -20,6 +29,7 @@ export const metadata: Metadata = {
   openGraph: { siteName: "HabileSec", locale: "en_IN", type: "website" },
   robots: { index: true, follow: true },
 };
+
 const organization = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -39,11 +49,12 @@ const organization = {
   },
   sameAs: ["https://linkedin.com/company/habilesec"],
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={manrope.variable}>
+    <html lang="en" className={`${manrope.variable} ${dmSerif.variable}`}>
       <body>
         <a className="skip-link" href="#main-content">
           Skip to content

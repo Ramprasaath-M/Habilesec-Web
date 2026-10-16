@@ -1,25 +1,18 @@
-import { ButtonLink } from "@/components/enterprise/shared";
+import { PageIntro } from "@/components/ui/page-intro";
+import { ButtonLink } from "@/components/ui/links";
+
 export default function NotFound() {
   return (
-    <section className="page-hero">
-      <div className="container">
-        <p className="eyebrow">Page not found</p>
-        <h1>
-          Let&apos;s get you
-          <br />
-          back on track.
-        </h1>
-        <p className="page-lead">
-          This page is unavailable. Explore our expertise or get in touch with
-          our team.
-        </p>
-        <div className="hero-actions">
-          <ButtonLink href="/">Back to home</ButtonLink>
-          <ButtonLink href="/contact" secondary>
-            Contact us
-          </ButtonLink>
-        </div>
-      </div>
-    </section>
+    <PageIntro
+      crumbs={[{ label: "Page not found" }]}
+      eyebrow="Page not found"
+      title="Let’s get you back on track."
+      lead="This page is unavailable. Explore our expertise or get in touch with our team."
+    >
+      <ButtonLink href="/">Back to home</ButtonLink>
+      <ButtonLink href="/contact" variant="ghost">
+        Contact us
+      </ButtonLink>
+    </PageIntro>
   );
 }

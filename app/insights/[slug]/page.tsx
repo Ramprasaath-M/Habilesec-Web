@@ -1,4 +1,4 @@
-import { PerspectiveDetail } from "@/components/enterprise/pages";
+import { PerspectiveDetail } from "@/components/pages/insight-pages";
 import { articles } from "@/data/editorial";
 import { notFound } from "next/navigation";
 import { pageMetadata } from "@/lib/metadata";

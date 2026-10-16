@@ -1,3 +1,5 @@
+> **Historical.** This report describes the earlier minimal build (15 Oct 2026) and predates the visual redesign. Its figures do not apply to the current site; see the redesign verification summary delivered with the redesign.
+
 # HabileSec frontend rebuild — QA report
 
 Reviewed on 15 October 2026 against a local production build, `http://localhost:3300`.

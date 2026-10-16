@@ -1,4 +1,4 @@
-import { ServiceDetail } from "@/components/enterprise/pages";
+import { ServiceDetail } from "@/components/pages/service-pages";
 import { serviceCategories } from "@/data/service-categories";
 import { notFound } from "next/navigation";
 import { pageMetadata } from "@/lib/metadata";

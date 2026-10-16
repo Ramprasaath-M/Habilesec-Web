@@ -1,4 +1,4 @@
-﻿import { PageHero } from "@/components/enterprise/shared";
+import { PageIntro } from "@/components/ui/page-intro";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Privacy Policy",
@@ -8,13 +8,14 @@ export const metadata = pageMetadata(
 export default function Page() {
   return (
     <>
-      <PageHero
+      <PageIntro
+        crumbs={[{ label: "Privacy policy" }]}
         eyebrow="Legal"
         title="Privacy policy"
-        copy="How this website handles your enquiry and how to contact HabileSec about privacy."
+        lead="How this website handles your enquiry and how to contact HabileSec about privacy."
       />
-      <section className="section">
-        <article className="container article-prose legal-prose">
+      <section className="sec">
+        <article className="container prose-legal">
           <section>
             <h2>Information you choose to share</h2>
             <p>

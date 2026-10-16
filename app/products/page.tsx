@@ -1,4 +1,4 @@
-import { ProductsLanding } from "@/components/enterprise/pages";
+import { ProductsLanding } from "@/components/pages/product-pages";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Products",

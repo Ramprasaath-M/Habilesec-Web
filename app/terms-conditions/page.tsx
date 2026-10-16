@@ -1,4 +1,4 @@
-﻿import { PageHero } from "@/components/enterprise/shared";
+import { PageIntro } from "@/components/ui/page-intro";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "Terms & Conditions",
@@ -35,13 +35,14 @@ const terms = [
 export default function Page() {
   return (
     <>
-      <PageHero
+      <PageIntro
+        crumbs={[{ label: "Terms & conditions" }]}
         eyebrow="Legal"
         title="Terms & conditions"
-        copy="These terms govern your use of the HabileSec India Pvt Ltd website. By accessing the site, you agree to these terms. If you do not agree, please discontinue use."
+        lead="These terms govern your use of the HabileSec India Pvt Ltd website. By accessing the site, you agree to these terms. If you do not agree, please discontinue use."
       />
-      <section className="section">
-        <article className="container article-prose legal-prose">
+      <section className="sec">
+        <article className="container prose-legal">
           {terms.map(([title, copy]) => (
             <section key={title}>
               <h2>{title}</h2>
