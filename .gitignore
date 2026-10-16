@@ -1,0 +1,14 @@
+.next
+node_modules
+out
+dist
+.env*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+/.artifacts/
+/artifacts/rebuild/browsers/
+/artifacts/rebuild/firefox-profile/
+/artifacts/rebuild/qa-tools/
+/artifacts/rebuild/*.zip
