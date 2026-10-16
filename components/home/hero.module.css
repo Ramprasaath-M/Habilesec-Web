@@ -86,7 +86,7 @@
   position: relative;
   z-index: 2;
   pointer-events: none;
-  padding-block: clamp(36px, 4.6vw, 64px) clamp(84px, 8vw, 110px);
+  padding-block: clamp(36px, 4.6vw, 64px);
 }
 .copy {
   pointer-events: auto;
@@ -150,87 +150,6 @@
   animation-delay: var(--d, 0ms);
 }
 
-/* The three practices, presented as the connected model */
-.loopWrap {
-  position: relative;
-  z-index: 2;
-  margin-top: -64px;
-}
-.loop {
-  display: grid;
-  grid-template-columns: 0.7fr repeat(3, 1fr);
-  background: var(--paper);
-  border: 1px solid var(--line);
-  box-shadow: 0 18px 40px rgb(15 32 51 / 0.07);
-  animation: rise 900ms var(--ease) 880ms both;
-}
-.loopLabel {
-  display: flex;
-  align-items: center;
-  padding: 28px 28px;
-  font: 700 13px/1.4 var(--font-ui);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.practice {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 26px 28px 28px;
-  border-left: 1px solid var(--line);
-  transition: background-color var(--t-content) var(--ease);
-}
-.practice::before {
-  content: "";
-  position: absolute;
-  left: -1px;
-  right: 0;
-  top: -1px;
-  height: 3px;
-  background: var(--ember);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 420ms var(--ease);
-}
-.practice:hover {
-  background: var(--ivory);
-}
-.practice:hover::before,
-.practice:focus-visible::before {
-  transform: scaleX(1);
-}
-.practiceTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--ink);
-}
-.practiceTop svg {
-  color: var(--blue);
-  transition: transform 260ms var(--ease);
-}
-.practice:hover .practiceTop svg {
-  transform: translate(3px, -3px);
-}
-.practiceName {
-  font-family: var(--font-display);
-  font-size: 28px;
-  line-height: 1.1;
-}
-.practiceDesc {
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--body);
-}
-.practiceLoop {
-  font-size: 14px;
-  color: var(--muted);
-  letter-spacing: 0.02em;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -258,21 +177,6 @@
   }
 }
 
-@media (max-width: 1099px) {
-  .loop {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .loopLabel {
-    grid-column: 1 / -1;
-    padding: 20px 24px 6px;
-  }
-  .practice:nth-of-type(1) {
-    border-left: 0;
-  }
-  .practice {
-    padding: 14px 24px 24px;
-  }
-}
 @media (max-width: 1199px) and (min-width: 900px) {
   .copy {
     max-width: 46%;
@@ -312,7 +216,7 @@
     bottom: auto;
   }
   .copyWrap {
-    padding-block: 24px 96px;
+    padding-block: 24px;
   }
   .copy {
     max-width: 620px;
@@ -325,30 +229,6 @@
   .actions :global(.btn),
   .ghost {
     width: 100%;
-  }
-  .loopWrap {
-    margin-top: -32px;
-  }
-  .copyWrap {
-    padding-bottom: 56px;
-  }
-  .loop {
-    grid-template-columns: 1fr;
-  }
-  .practice,
-  .practice:nth-of-type(1) {
-    border-left: 0;
-    border-top: 1px solid var(--line);
-    padding: 14px 24px 16px;
-  }
-  .practiceLoop {
-    display: none;
-  }
-  .practice::before {
-    left: 0;
-  }
-  .loopLabel {
-    padding: 20px 24px 12px;
   }
 }
 @media (max-width: 559px) {

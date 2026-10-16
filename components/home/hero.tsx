@@ -1,16 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/links";
-import { services } from "@/data/site";
 import { HeroGlass } from "./hero-glass";
 import s from "./hero.module.css";
-
-const descriptors: Record<string, string> = {
-  grcloop: "Governance & compliance",
-  forgeloop: "Secure engineering",
-  hexn6: "Incident response",
-};
 
 export function Hero() {
   return (
@@ -58,22 +50,6 @@ export function Hero() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className={`container ${s.loopWrap}`}>
-        <nav className={s.loop} aria-label="HabileSec practices">
-          <p className={s.loopLabel}>One connected approach</p>
-          {services.map((p) => (
-            <Link key={p.slug} href={p.href} className={s.practice}>
-              <span className={s.practiceTop}>
-                <span className={s.practiceName}>{p.title}</span>
-                <ArrowUpRight size={20} aria-hidden="true" />
-              </span>
-              <span className={s.practiceDesc}>{descriptors[p.slug]}</span>
-              <span className={s.practiceLoop}>{p.loop.join(" · ")}</span>
-            </Link>
-          ))}
-        </nav>
       </div>
     </section>
   );

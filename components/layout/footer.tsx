@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { serviceCategories } from "@/data/service-categories";
+import { capabilities } from "@/data/capabilities";
 import { company, products, services } from "@/data/site";
 import s from "./footer.module.css";
 
@@ -10,7 +10,7 @@ export function SiteFooter() {
     <footer className={s.footer}>
       <div className={`container ${s.grid}`}>
         <div className={s.brand}>
-          <Link href="/" aria-label="HabileSec home">
+          <Link href="/" aria-label="HabileSec home" className={s.logo}>
             <Image
               src="/brand/habilesec-logo.png"
               width={164}
@@ -39,7 +39,7 @@ export function SiteFooter() {
         </div>
         <nav aria-label="Services" className={s.col}>
           <h2 className={s.heading}>What we do</h2>
-          {serviceCategories.map((c) => (
+          {capabilities.map((c) => (
             <Link key={c.slug} href={`/what-we-do/${c.slug}`}>
               {c.name}
             </Link>
@@ -53,7 +53,7 @@ export function SiteFooter() {
             </Link>
           ))}
           {products.map((p) => (
-            <Link key={p.slug} href={`/products/${p.slug}`}>
+            <Link key={p.slug} href={p.href}>
               {p.title}
             </Link>
           ))}
