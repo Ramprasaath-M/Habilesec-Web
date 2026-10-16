@@ -1,94 +1,118 @@
 "use client";
 import { useId, useState } from "react";
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { challengeEntries } from "@/data/enterprise";
-import { challengeVisuals } from "@/data/visuals";
-import { TextLink } from "@/components/ui/links";
+import { ChevronDown } from "lucide-react";
+import { ShieldCheck, ClipboardCheck, Layers, Activity } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
-import { useTabKeys } from "@/components/ui/use-tabs";
+import { ButtonLink, TextLink } from "@/components/ui/links";
 import s from "./challenge-explorer.module.css";
 
+const rows = [
+  {
+    title: "Strengthen our security",
+    short: "Identify security gaps across applications, infrastructure and cloud.",
+    detail:
+      "We help identify vulnerabilities, understand exposure, and prioritize practical security improvements.",
+    href: "/what-we-do/cybersecurity",
+    Icon: ShieldCheck,
+  },
+  {
+    title: "Prepare for compliance",
+    short: "Understand applicable requirements and assess your readiness.",
+    detail:
+      "Evaluate compliance gaps, strengthen governance practices, and establish a clear path toward applicable requirements.",
+    href: "/what-we-do/governance-compliance",
+    Icon: ClipboardCheck,
+  },
+  {
+    title: "Build a digital product",
+    short: "Plan, engineer and deliver secure digital applications.",
+    detail:
+      "Turn business ideas into reliable digital products through thoughtful design, engineering, and security practices.",
+    href: "/what-we-do/digital-engineering",
+    Icon: Layers,
+  },
+  {
+    title: "Respond to an incident",
+    short: "Understand what happened, contain the impact and recover.",
+    detail:
+      "Assess the incident, support containment and investigation, and identify practical recovery and improvement actions.",
+    href: "/what-we-do/incident-response",
+    Icon: Activity,
+  },
+];
+
 export function ChallengeExplorer() {
-  const [active, setActive] = useState(0);
+  const [open, setOpen] = useState<number | null>(null);
   const uid = useId();
-  const { onKeyDown, setRef } = useTabKeys(challengeEntries.length, setActive);
 
   return (
-    <section className={`sec bg-ivory ${s.section}`} aria-labelledby="begin-title">
+    <section className={s.section} aria-labelledby="begin-title">
       <div className={`container ${s.grid}`}>
-        <div className={s.left}>
-          <Reveal>
-            <p className="eyebrow">Where do you begin?</p>
-            <h2 id="begin-title" className={s.title}>
-              Start with the challenge in front of you.
-            </h2>
-            <p className={`lead ${s.intro}`}>
-              Every organization has a different starting point. Choose yours
-              to see where we can help.
-            </p>
-          </Reveal>
-          <div
-            className={s.tabs}
-            role="tablist"
-            aria-label="Business challenges"
-            aria-orientation="vertical"
-          >
-            {challengeEntries.map((c, i) => (
-              <button
-                key={c.title}
-                ref={setRef(i)}
-                type="button"
-                role="tab"
-                id={`${uid}-tab-${i}`}
-                aria-selected={active === i}
-                aria-controls={`${uid}-panel-${i}`}
-                tabIndex={active === i ? 0 : -1}
-                className={s.tab}
-                onClick={() => setActive(i)}
-                onKeyDown={(e) => onKeyDown(e, i)}
-              >
-                <span className={`num ${s.tabNum}`}>0{i + 1}</span>
-                <span className={s.tabTitle}>{c.title}</span>
-                <ArrowRight size={20} aria-hidden="true" />
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <Reveal className={s.stage} kind="fade" delay={120}>
-          {challengeEntries.map((c, i) => (
-            <div
-              key={c.title}
-              id={`${uid}-panel-${i}`}
-              role="tabpanel"
-              aria-labelledby={`${uid}-tab-${i}`}
-              className={s.panel}
-              data-active={active === i || undefined}
-              aria-hidden={active === i ? undefined : true}
-              inert={active === i ? undefined : true}
-            >
-              <div className={s.media}>
-                <Image
-                  src={challengeVisuals[i].src}
-                  alt={challengeVisuals[i].alt}
-                  fill
-                  sizes="(min-width: 1024px) 52vw, 100vw"
-                  style={{ objectPosition: challengeVisuals[i].pos }}
-                />
-                <span className={s.badge} aria-hidden="true">
-                  <span className="num">0{i + 1}</span>
-                  <span>Challenge</span>
-                </span>
-              </div>
-              <div className={s.body}>
-                <h3 className={`serif-3 ${s.panelTitle}`}>{c.copy}</h3>
-                <p>{c.detail}</p>
-                <TextLink href={c.href}>Find your next step</TextLink>
-              </div>
-            </div>
-          ))}
+        <Reveal className={s.left}>
+          <p className={s.eyebrow}>Where do you begin?</p>
+          <h2 id="begin-title" className={s.title}>
+            Start with the challenge in front of you.
+          </h2>
+          <p className={s.intro}>
+            Every organization has a different starting point. Choose yours to
+            see where we can help.
+          </p>
+          <ButtonLink href="/what-we-do">Explore all capabilities</ButtonLink>
         </Reveal>
+
+        <ul className={s.rows}>
+          {rows.map((r, i) => {
+            const on = open === i;
+            return (
+              <Reveal as="li" key={r.title} delay={120 + i * 70}>
+                <div className={s.row} data-open={on || undefined}>
+                  <h3 className={s.head}>
+                    <button
+                      type="button"
+                      className={s.toggle}
+                      aria-expanded={on}
+                      aria-controls={`${uid}-p${i}`}
+                      id={`${uid}-b${i}`}
+                      onClick={() => setOpen(on ? null : i)}
+                    >
+                      <span className={s.num} aria-hidden="true">
+                        0{i + 1}
+                      </span>
+                      <span className={s.main}>
+                        <r.Icon
+                          className={s.icon}
+                          size={22}
+                          strokeWidth={1.7}
+                          aria-hidden="true"
+                        />
+                        <span className={s.name}>{r.title}</span>
+                        <span className={s.short}>{r.short}</span>
+                      </span>
+                      <ChevronDown
+                        className={s.chev}
+                        size={20}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </h3>
+                  <div
+                    id={`${uid}-p${i}`}
+                    role="region"
+                    aria-labelledby={`${uid}-b${i}`}
+                    className={s.panel}
+                    data-open={on || undefined}
+                    inert={on ? undefined : true}
+                  >
+                    <div className={s.panelInner}>
+                      <p>{r.detail}</p>
+                      <TextLink href={r.href}>Find your next step</TextLink>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );
