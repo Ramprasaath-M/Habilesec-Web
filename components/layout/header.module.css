@@ -241,7 +241,11 @@
       transform 280ms var(--ease),
       visibility 0s linear 280ms;
   }
+  .panel {
+    pointer-events: none;
+  }
   .panel[data-open="true"] {
+    pointer-events: auto;
     opacity: 1;
     visibility: visible;
     transform: none;

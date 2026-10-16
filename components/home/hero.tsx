@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { ButtonLink, TextLink } from "@/components/ui/links";
+import { ButtonLink } from "@/components/ui/links";
 import { services } from "@/data/site";
-import { heroVisual } from "@/data/visuals";
+import { HeroGlass } from "./hero-glass";
 import s from "./hero.module.css";
 
 const descriptors: Record<string, string> = {
@@ -18,40 +18,41 @@ export function Hero() {
       <div className={s.stage}>
         <div className={s.media}>
           <Image
-            src={heroVisual.src}
-            alt={heroVisual.alt}
+            src="/images/hero/hero-laptop.webp"
+            alt="A professional working on a laptop at a bright desk"
             fill
             priority
             fetchPriority="high"
             sizes="100vw"
-            style={{ objectPosition: heroVisual.pos }}
           />
+        </div>
+        <div className={s.glassBox}>
+          <HeroGlass />
         </div>
         <div className={`container ${s.copyWrap}`}>
           <div className={s.copy}>
-            <p className={`eyebrow ${s.rise}`} style={{ "--d": "420ms" } as React.CSSProperties}>
-              HabileSec · Connected expertise
+            <p className={`${s.eyebrow} ${s.rise}`} style={{ "--d": "250ms" } as React.CSSProperties}>
+              SECURE. ADAPT. ADVANCE.
             </p>
-            <h1 id="home-title" className={`display ${s.title}`}>
-              <span className={s.ln} style={{ "--i": 0 } as React.CSSProperties}>
-                <span>Confidence</span>
-              </span>{" "}
-              <span className={s.ln} style={{ "--i": 1 } as React.CSSProperties}>
-                <span>for what</span>
-              </span>{" "}
-              <span className={s.ln} style={{ "--i": 2 } as React.CSSProperties}>
-                <span>
-                  comes next<span className={s.stop}>.</span>
-                </span>
-              </span>
+            <h1 id="home-title" className={`${s.title} ${s.rise}`} style={{ "--d": "380ms" } as React.CSSProperties}>
+              Confidence to Operate in a Digital-First World.
             </h1>
-            <p className={`lead ${s.rise}`} style={{ "--d": "620ms" } as React.CSSProperties}>
-              Cybersecurity, governance and secure engineering. Working
-              together to help your business move forward.
-            </p>
-            <div className={`${s.actions} ${s.rise}`} style={{ "--d": "740ms" } as React.CSSProperties}>
-              <ButtonLink href="/what-we-do">Explore our expertise</ButtonLink>
-              <TextLink href="/contact">Talk to our team</TextLink>
+            <div className={`${s.body} ${s.rise}`} style={{ "--d": "540ms" } as React.CSSProperties}>
+              <p>
+                As technology evolves, businesses face growing expectations
+                around security, accountability, and digital trust.
+              </p>
+              <p>
+                HabileSec helps organizations navigate these challenges with the
+                expertise, insight, and support needed to make confident
+                business decisions.
+              </p>
+            </div>
+            <div className={`${s.actions} ${s.rise}`} style={{ "--d": "700ms" } as React.CSSProperties}>
+              <ButtonLink href="/contact">Start a Conversation</ButtonLink>
+              <Link href="/about" className={s.ghost}>
+                Discover HabileSec
+              </Link>
             </div>
           </div>
         </div>

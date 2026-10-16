@@ -1,0 +1,282 @@
+.layer {
+  --px: 0;
+  --py: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.lines path {
+  fill: none;
+  stroke: #2874a6;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  opacity: 0.38;
+  animation: draw 1000ms var(--ease) both;
+  animation-delay: calc(1100ms + var(--i) * 170ms);
+  transition:
+    opacity 250ms var(--ease),
+    stroke-width 250ms var(--ease);
+}
+.lines path[data-hot] {
+  opacity: 0.95;
+  stroke-width: 2;
+}
+
+/* Slot: position + entrance. Depth: pointer parallax. Float: ambient. */
+.slot {
+  position: absolute;
+  left: var(--mx, var(--x));
+  top: var(--my, var(--y));
+  width: 0;
+  height: 0;
+  animation: enter 700ms var(--ease) both;
+  animation-delay: calc(700ms + var(--i) * 120ms);
+}
+.slot[data-active] {
+  z-index: 3;
+}
+.depth {
+  transform: translate(
+    calc(var(--px) * var(--d) * 1px),
+    calc(var(--py) * var(--d) * 1px)
+  );
+  transition: transform 380ms var(--ease);
+}
+.float {
+  position: relative;
+  animation: bob var(--ft) ease-in-out infinite alternate;
+  animation-delay: var(--fd);
+}
+
+.panel {
+  pointer-events: auto;
+  position: absolute;
+  left: -52px;
+  top: -52px;
+  width: 104px;
+  height: 104px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid rgb(255 255 255 / 0.85);
+  outline: 1px solid rgb(40 116 166 / 0.35);
+  outline-offset: -2px;
+  background: rgb(255 255 255 / 0.4);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  backdrop-filter: blur(10px) saturate(1.2);
+  box-shadow:
+    0 10px 28px rgb(18 59 99 / 0.14),
+    inset 0 1px 0 rgb(255 255 255 / 0.9);
+  color: #123b63;
+  cursor: pointer;
+  transition:
+    transform 260ms var(--ease),
+    background-color 260ms var(--ease),
+    outline-color 260ms var(--ease),
+    box-shadow 260ms var(--ease);
+}
+.panel:hover,
+.panel:focus-visible,
+.slot[data-active] .panel {
+  transform: translateY(-4px) scale(1.04);
+  background: rgb(255 255 255 / 0.72);
+  outline-color: rgb(40 116 166 / 0.85);
+  box-shadow:
+    0 14px 34px rgb(18 59 99 / 0.2),
+    inset 0 1px 0 #fff;
+}
+.panel:focus-visible {
+  outline: 2px solid #123b63;
+  outline-offset: 3px;
+}
+.panel svg {
+  color: #2874a6;
+}
+.label {
+  font: 700 11px/1.2 var(--font-ui);
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #123b63;
+}
+
+/* Capability description */
+.tip {
+  pointer-events: none;
+  position: absolute;
+  top: 66px;
+  left: -110px;
+  width: 220px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgb(255 255 255 / 0.9);
+  background: rgb(255 255 255 / 0.86);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 28px rgb(18 59 99 / 0.16);
+  font-size: 13px;
+  line-height: 1.45;
+  color: #43576b;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition:
+    opacity 240ms var(--ease),
+    transform 280ms var(--ease),
+    visibility 0s linear 240ms;
+}
+.tip strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 13px;
+  color: #123b63;
+}
+.tip[data-side="right"] {
+  left: auto;
+  right: -52px;
+}
+@media (min-width: 900px) {
+  .tip[data-beside] {
+    top: -34px;
+    right: 66px;
+  }
+}
+.slot[data-active] .tip {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bob {
+  from {
+    transform: translateY(-3px);
+  }
+  to {
+    transform: translateY(4px);
+  }
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+    opacity: 0.95;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 0.38;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float {
+    animation: none;
+  }
+  .depth {
+    transform: none;
+  }
+}
+
+/* Laptop-width: pull panels clear of the text column */
+@media (max-width: 1199px) and (min-width: 900px) {
+  .panel {
+    width: 92px;
+    height: 92px;
+    left: -46px;
+    top: -46px;
+  }
+  .slot[data-extra="true"],
+  .slot[data-extra] {
+    display: none;
+  }
+  .lines path[data-extra] {
+    display: none;
+  }
+}
+
+/* Stacked layouts: panels sit on the photograph, smaller, fewer */
+@media (max-width: 899px) {
+  .slot[data-extra] {
+    display: block;
+  }
+  .panel {
+    width: 76px;
+    height: 76px;
+    left: -38px;
+    top: -38px;
+    gap: 5px;
+    padding: 6px;
+    border-radius: 16px;
+  }
+  .panel svg {
+    width: 22px;
+    height: 22px;
+  }
+  .label {
+    font-size: 10px;
+  }
+  .tip {
+    top: 50px;
+    width: 190px;
+  }
+  .tip[data-side="right"] {
+    right: -38px;
+  }
+}
+@media (max-width: 899px) {
+  .lines {
+    display: none;
+  }
+  .slot[data-id="cloud"] {
+    --mx: 13%;
+    --my: 34%;
+  }
+  .slot[data-id="risk"] {
+    --mx: 37%;
+    --my: 17%;
+  }
+  .slot[data-id="testing"] {
+    --mx: 86%;
+    --my: 62%;
+  }
+  .slot[data-id="ops"] {
+    --mx: 14%;
+    --my: 72%;
+  }
+  .slot[data-id="trust"] {
+    --mx: 40%;
+    --my: 80%;
+  }
+  .slot[data-id="cloud"] .tip,
+  .slot[data-id="ops"] .tip {
+    left: -38px;
+  }
+}
+@media (max-width: 599px) {
+  .slot[data-extra],
+  .lines path[data-extra] {
+    display: none;
+  }
+}
