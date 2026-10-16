@@ -104,8 +104,105 @@
   font-size: clamp(30px, 3.3vw, 48px);
   line-height: 1.12;
   letter-spacing: -0.025em;
-  color: #123b63;
+  color: var(--ink);
 }
+/* Heading: navy base, selective blue-to-violet gradient words, soft resting glow */
+.hhNavy {
+  color: #142b55;
+}
+.hhGrad {
+  position: relative;
+  color: #14558c; /* fallback where gradient text is unsupported */
+  isolation: isolate;
+}
+.hhOperate {
+  --g: linear-gradient(100deg, #142b55 0%, #14558c 45%, #1689e8 100%);
+}
+.hhDigital {
+  --g: linear-gradient(100deg, #14558c 0%, #1689e8 50%, #14558c 100%);
+}
+.hhWorld {
+  --g: linear-gradient(100deg, #14558c 0%, #1689e8 45%, #7955d9 100%);
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hhGrad {
+    background-image: var(--g);
+    background-size: 220% 100%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    animation:
+      hhReveal 900ms var(--ease) 500ms both,
+      hhShift 12s ease-in-out 1.4s infinite alternate;
+  }
+}
+/* diffused atmospheric light behind the word; radial gradients, no blur filter */
+.hhGrad::before {
+  content: "";
+  position: absolute;
+  inset: -0.25em -0.35em;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    rgb(22 137 232 / 0.2),
+    rgb(121 85 217 / 0.1) 45%,
+    transparent 72%
+  );
+  opacity: 0.55;
+  animation:
+    hhGlowIn 1000ms var(--ease) 600ms both,
+    hhGlow 12s ease-in-out 1.6s infinite alternate;
+}
+.hhNavy + .hhOperate::before {
+  opacity: 0.55;
+}
+@keyframes hhReveal {
+  from {
+    background-position: 100% 50%;
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes hhShift {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+@keyframes hhGlowIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.8;
+  }
+}
+@keyframes hhGlow {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hhGrad,
+  .hhGrad::before {
+    animation: none !important;
+  }
+  .hhGrad::before {
+    opacity: 0.5;
+  }
+}
+
 .body {
   margin-top: 18px;
   display: flex;
@@ -114,7 +211,7 @@
   max-width: 50ch;
   font-size: clamp(14.5px, 1.1vw, 16px);
   line-height: 1.55;
-  color: #2f4760;
+  color: var(--body);
 }
 .actions {
   margin-top: 24px;
@@ -136,7 +233,7 @@
   border: 1px solid #b9cfe2;
   background: #fff;
   font: 700 14px/1 var(--font-ui);
-  color: #123b63;
+  color: var(--ink);
   transition:
     border-color var(--t-micro) var(--ease),
     background-color var(--t-micro) var(--ease);

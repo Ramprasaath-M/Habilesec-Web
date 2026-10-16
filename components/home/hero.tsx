@@ -29,7 +29,11 @@ export function Hero() {
               SECURE. ADAPT. ADVANCE.
             </p>
             <h1 id="home-title" className={`${s.title} ${s.rise}`} style={{ "--d": "380ms" } as React.CSSProperties}>
-              Confidence to Operate in a Digital-First World.
+              <span className={s.hhNavy}>Confidence to</span>{" "}
+              <span className={`${s.hhGrad} ${s.hhOperate}`}>Operate</span>{" "}
+              <span className={s.hhNavy}>in a</span>{" "}
+              <span className={`${s.hhGrad} ${s.hhDigital}`}>Digital-First</span>{" "}
+              <span className={`${s.hhGrad} ${s.hhWorld}`}>World.</span>
             </h1>
             <div className={`${s.body} ${s.rise}`} style={{ "--d": "540ms" } as React.CSSProperties}>
               <p>
