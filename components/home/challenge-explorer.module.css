@@ -3,17 +3,18 @@
   background: linear-gradient(110deg, #f8fbff 0%, #eaf5fc 55%, #d5ebfa 100%);
 }
 .grid {
-  display: grid;
-  grid-template-columns: minmax(0, 32fr) minmax(0, 68fr);
-  gap: clamp(28px, 4vw, 64px);
-  align-items: start;
-}
-.left {
-  align-self: start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
+  align-items: center;
+}
+.left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  margin-bottom: clamp(28px, 3.4vw, 44px);
 }
 .eyebrow {
   font: 700 13px/1.3 var(--font-ui);
@@ -22,18 +23,34 @@
   color: #2675b4;
 }
 .title {
-  font-size: clamp(30px, 3vw, 42px);
-  line-height: 1.12;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.15;
   color: #17191d;
+  text-wrap: balance;
 }
 .intro {
-  max-width: 34ch;
+  max-width: 62ch;
   font-size: 16px;
   line-height: 1.6;
   color: #484c54;
-  margin-bottom: 6px;
+  margin-top: 2px;
+}
+.cta {
+  margin-top: clamp(24px, 2.6vw, 32px);
+}
+@media (min-width: 1200px) {
+  .title {
+    white-space: nowrap;
+    text-wrap: nowrap;
+  }
+  .intro {
+    max-width: none;
+    white-space: nowrap;
+  }
 }
 .rows {
+  width: 100%;
+  max-width: 1160px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -141,11 +158,6 @@
 .panel[data-open] .panelInner {
   padding-bottom: 14px;
   opacity: 1;
-}
-@media (max-width: 1023px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
 }
 @media (max-width: 1199px) and (min-width: 640px) {
   .main {

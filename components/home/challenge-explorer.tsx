@@ -57,7 +57,6 @@ export function ChallengeExplorer() {
             Every organization has a different starting point. Choose yours to
             see where we can help.
           </p>
-          <ButtonLink href="/what-we-do">Explore all capabilities</ButtonLink>
         </Reveal>
 
         <ul className={s.rows}>
@@ -113,6 +112,9 @@ export function ChallengeExplorer() {
             );
           })}
         </ul>
+        <Reveal className={s.cta} delay={400}>
+          <ButtonLink href="/what-we-do">Explore all capabilities</ButtonLink>
+        </Reveal>
       </div>
     </section>
   );
