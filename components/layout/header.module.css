@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgb(255 255 255 / 0.97);
+  background: #fff;
   border-bottom: 1px solid transparent;
   transition:
     border-color var(--t-content) var(--ease),
@@ -153,6 +153,9 @@
 .preview {
   display: none;
 }
+.backdrop {
+  display: none;
+}
 
 /* ---------- Desktop ---------- */
 @media (min-width: 1024px) {
@@ -256,7 +259,37 @@
   }
   .panelFlat {
     display: block;
-    padding-block: 32px 36px !important;
+    padding-block: 24px 28px !important;
+  }
+  .panelSoft {
+    background: #f0f4f8;
+    border-top: 1px solid #d5dee8;
+    border-bottom: 1px solid #c3ccd6;
+    box-shadow: 0 14px 24px -12px rgb(15 32 51 / 0.18);
+    transition:
+      opacity 180ms var(--ease),
+      transform 200ms var(--ease),
+      visibility 0s linear 200ms;
+  }
+  .panelSoft[data-open="true"] {
+    transition-delay: 0s;
+  }
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: var(--header-h) 0 0 0;
+    z-index: -1;
+    background: rgb(15 32 51 / 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 180ms var(--ease),
+      visibility 0s linear 180ms;
+  }
+  .backdrop[data-open="true"] {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
   }
   .panelIntro {
     display: flex;

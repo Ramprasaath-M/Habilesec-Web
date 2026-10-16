@@ -116,7 +116,7 @@ export function Header() {
         </button>
         <div
           id={`menu-${id}`}
-          className={s.panel}
+          className={`${s.panel} ${id === "services" ? s.panelSoft : ""}`}
           data-open={open}
           role="group"
           aria-label={label}
@@ -168,6 +168,12 @@ export function Header() {
           setOpenId(null);
       }}
     >
+      <div
+        className={s.backdrop}
+        data-open={openId !== null}
+        aria-hidden="true"
+        onClick={() => setOpenId(null)}
+      />
       <div className={`container ${s.row}`}>
         <Link
           href="/"
