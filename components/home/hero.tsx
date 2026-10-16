@@ -17,14 +17,16 @@ export function Hero() {
     <section className={s.hero} aria-labelledby="home-title">
       <div className={s.stage}>
         <div className={s.media}>
-          <Image
-            src="/images/hero/hero-laptop.webp"
-            alt="A professional working on a laptop at a bright desk"
-            fill
-            priority
-            fetchPriority="high"
-            sizes="100vw"
-          />
+          <div className={s.photo}>
+            <Image
+              src="/images/hero/hero-typing.webp"
+              alt="Hands typing on a laptop keyboard"
+              fill
+              priority
+              fetchPriority="high"
+              sizes="(min-width: 900px) 48vw, 100vw"
+            />
+          </div>
         </div>
         <div className={s.glassBox}>
           <HeroGlass />
