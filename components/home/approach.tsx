@@ -9,32 +9,32 @@ const cards = [
     title: "Understand the Context",
     copy: "Start with the organization’s goals, operating environment, and specific requirements.",
     src: `${base}/understand-context.webp`,
-    alt: "Business professionals silhouetted against a window overlooking a city skyline",
-    pos: "30% 40%",
+    alt: "A team around a table reviewing documents and laptops in a bright office",
+    pos: "35% 45%",
   },
   {
     n: "02",
     title: "Identify What Matters",
     copy: "Bring attention to the issues, dependencies, and priorities that deserve consideration.",
     src: `${base}/identify-priorities.webp`,
-    alt: "A hand pointing a pencil at charts on a printed report beside a laptop",
-    pos: "50% 30%",
+    alt: "Colleagues pointing at charts on a printed report and a tablet",
+    pos: "40% 40%",
   },
   {
     n: "03",
     title: "Define the Way Forward",
     copy: "Establish a clear direction based on the engagement objectives, available evidence, and agreed scope.",
     src: `${base}/define-direction.webp`,
-    alt: "A straight road leading toward mountains on the horizon",
-    pos: "50% 50%",
+    alt: "A bridge leading across the water toward a city skyline at dusk",
+    pos: "60% 50%",
   },
   {
     n: "04",
     title: "Support Meaningful Progress",
     copy: "Help organizations move from recommendations to appropriate next steps through engagement-specific support.",
     src: `${base}/support-progress.webp`,
-    alt: "Two colleagues discussing a printed report at a table",
-    pos: "50% 25%",
+    alt: "Two colleagues discussing their work at a bright desk",
+    pos: "50% 40%",
   },
 ];
 
@@ -55,7 +55,7 @@ export function Approach() {
         </Reveal>
         <ol className={s.grid}>
           {cards.map((c, i) => (
-            <Reveal as="li" key={c.n} delay={i * 130} className={s.card}>
+            <Reveal as="li" key={c.n} delay={i * 130} className={s.card} style={{ "--i": i } as React.CSSProperties}>
               <Image
                 src={c.src}
                 alt={c.alt}
