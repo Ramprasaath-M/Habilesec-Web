@@ -23,12 +23,18 @@
   bottom: 12%;
   width: 1px;
   background: #e2e8f0;
+  transform-origin: top;
+  transition: transform 600ms var(--ease) calc(var(--i, 0) * 150ms + 100ms);
+}
+.item:first-child + .item::before {
+  --i: 0;
 }
 .item:first-child {
   padding-left: 0;
 }
 .figure {
-  font: 700 clamp(56px, 5.2vw, 76px) / 1 var(--font-ui);
+  font: 700 clamp(46px, 5.2vw, 76px) / 1 var(--font-ui);
+  font-variant-numeric: tabular-nums;
   letter-spacing: -0.04em;
   color: #1768b8;
 }
@@ -47,6 +53,29 @@
   letter-spacing: -0.01em;
   color: #171717;
 }
+.num {
+  display: inline-block;
+  min-width: 3ch;
+}
+.fx {
+  transition:
+    opacity 560ms var(--ease),
+    transform 600ms var(--ease);
+}
+.fxTitle {
+  transition-delay: calc(200ms + var(--i, 0) * 150ms);
+}
+.fxCopy {
+  transition-delay: calc(330ms + var(--i, 0) * 150ms);
+}
+/* hidden only once JS has armed the section and until it enters view */
+.strip[data-phase="armed"] .fx {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.strip[data-phase="armed"] .item + .item::before {
+  transform: scaleY(0);
+}
 .title span {
   background: linear-gradient(#1768b8, #1768b8) 0 100% / 0 2px no-repeat;
   padding-bottom: 3px;
@@ -54,6 +83,12 @@
 }
 .item:hover .title span {
   background-size: 100% 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx,
+  .item::before {
+    transition: none;
+  }
 }
 .copy {
   max-width: 30ch;
@@ -74,6 +109,9 @@
   }
 }
 @media (max-width: 599px) {
+  .strip[data-phase="armed"] .fx {
+    transform: translateY(10px);
+  }
   .row {
     grid-template-columns: 1fr;
     row-gap: 0;

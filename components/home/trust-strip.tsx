@@ -1,11 +1,19 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import { Reveal } from "@/components/motion/reveal";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import s from "./trust-strip.module.css";
 
-// Content and approval flag live here. The 85+ figure is PENDING CONFIRMATION:
-// keep `approved: false` until the business signs it off, then flip it to
-// show the number (with a one-time count-up).
+const useIsoLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+// PENDING CONFIRMATION: the 85+ figure is a proposed metric. `approved` stays
+// false until the business records approval; only then is the number shown
+// (with its one-time count-up). Do not flip this without sign-off.
 const metric = { value: 85, suffix: "+", label: "Organizations Globally", approved: false };
 
 const principles = [
@@ -14,62 +22,94 @@ const principles = [
   { title: "Accountability", copy: "Defined scope, transparent deliverables, and engagement-focused support." },
 ];
 
-function CountUp({ to, suffix }: { to: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [n, setN] = useState(to);
+export function TrustStrip() {
+  const ref = useRef<HTMLElement>(null);
+  const num = useRef<HTMLSpanElement>(null);
+  // idle: fully visible (no JS / reduced motion) -> armed: hidden -> in: animating
+  const [phase, setPhase] = useState<"idle" | "armed" | "in">("idle");
+
+  useIsoLayoutEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // text is set imperatively so React re-renders never clobber the counter
+    if (num.current) num.current.textContent = `0${metric.suffix}`;
+    setPhase("armed");
+  }, []);
+
   useEffect(() => {
+    if (phase !== "armed") return;
     const el = ref.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        io.disconnect(); // runs once per visit
+        setPhase("in");
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [phase]);
+
+  // one-time counter, started when the section enters view
+  useEffect(() => {
+    if (phase !== "in" || !metric.approved) return;
+    const out = num.current;
+    if (!out) return;
     let raf = 0;
-    const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
-      io.disconnect();
+    const timer = window.setTimeout(() => {
       const t0 = performance.now();
       const tick = (t: number) => {
-        const p = Math.min(1, (t - t0) / 1100);
-        setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
+        const p = Math.min(1, (t - t0) / 1800);
+        out.textContent = `${Math.round(metric.value * (1 - Math.pow(1 - p, 3)))}${metric.suffix}`;
         if (p < 1) raf = requestAnimationFrame(tick);
       };
-      setN(0);
       raf = requestAnimationFrame(tick);
-    });
-    io.observe(el);
+    }, 100);
     return () => {
-      io.disconnect();
+      window.clearTimeout(timer);
       cancelAnimationFrame(raf);
     };
-  }, [to]);
-  return (
-    <span ref={ref}>
-      <span aria-hidden="true">{n}{suffix}</span>
-      <span className="sr-only">{to}{suffix}</span>
-    </span>
-  );
-}
+  }, [phase]);
 
-export function TrustStrip() {
   return (
-    <section className={s.strip} aria-label="Why organizations work with HabileSec">
+    <section
+      ref={ref}
+      className={s.strip}
+      data-phase={phase}
+      aria-label="Why organizations work with HabileSec"
+    >
       <ul className={`container ${s.row}`}>
-        <Reveal as="li" className={`${s.item} ${s.lead}`}>
+        <li className={`${s.item} ${s.lead}`}>
           {metric.approved ? (
             <>
               <p className={s.figure}>
-                <CountUp to={metric.value} suffix={metric.suffix} />
+                {/* screen readers get the final value; the visual counter is hidden from them */}
+                <span className="sr-only">
+                  {metric.value}
+                  {metric.suffix}
+                </span>
+                <span ref={num} aria-hidden="true" className={s.num}>
+                  {`${metric.value}${metric.suffix}`}
+                </span>
               </p>
               <p className={s.label}>{metric.label}</p>
             </>
           ) : (
             <p className={s.figureText}>{metric.label}</p>
           )}
-        </Reveal>
+        </li>
         {principles.map((p, i) => (
-          <Reveal as="li" key={p.title} delay={90 * (i + 1)} className={s.item}>
-            <h2 className={s.title}>
+          <li
+            key={p.title}
+            className={s.item}
+            style={{ "--i": i } as CSSProperties}
+          >
+            <h2 className={`${s.title} ${s.fx} ${s.fxTitle}`}>
               <span>{p.title}</span>
             </h2>
-            <p className={s.copy}>{p.copy}</p>
-          </Reveal>
+            <p className={`${s.copy} ${s.fx} ${s.fxCopy}`}>{p.copy}</p>
+          </li>
         ))}
       </ul>
     </section>
