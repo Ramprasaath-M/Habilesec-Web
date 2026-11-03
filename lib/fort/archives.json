@@ -1,0 +1,57 @@
+{
+  "/category/industry-trends": [
+    "How to choose antivirus protection for needs",
+    "Simple ways to keep your family safe online"
+  ],
+  "/category/best-practices": [
+    "Identifying and stopping ransomware early",
+    "The dangers of public Wi-Fi and how to stay secure"
+  ],
+  "/category/security-solutions": [
+    "Why regular software updates matter for security",
+    "How to safely store sensitive files in the cloud"
+  ],
+  "/category/technology": [
+    "Balancing convenience and security online",
+    "Creating a robust backup plan for your digital assets"
+  ],
+  "/tag/cloud-security": [
+    "How to choose antivirus protection for needs",
+    "Why regular software updates matter for security",
+    "The dangers of public Wi-Fi and how to stay secure"
+  ],
+  "/tag/data-privacy": [
+    "How to choose antivirus protection for needs",
+    "Identifying and stopping ransomware early",
+    "Simple ways to keep your family safe online",
+    "How to safely store sensitive files in the cloud",
+    "The dangers of public Wi-Fi and how to stay secure"
+  ],
+  "/tag/incident-response": [
+    "How to choose antivirus protection for needs",
+    "Identifying and stopping ransomware early",
+    "Balancing convenience and security online"
+  ],
+  "/tag/encryption": [
+    "Balancing convenience and security online",
+    "Simple ways to keep your family safe online",
+    "Creating a robust backup plan for your digital assets"
+  ],
+  "/tag/threat-detection": [
+    "Balancing convenience and security online",
+    "How to safely store sensitive files in the cloud",
+    "Creating a robust backup plan for your digital assets"
+  ],
+  "/tag/compliance": [
+    "Identifying and stopping ransomware early",
+    "Why regular software updates matter for security",
+    "Creating a robust backup plan for your digital assets"
+  ],
+  "/tag/risk-management": [
+    "Why regular software updates matter for security",
+    "Simple ways to keep your family safe online",
+    "How to safely store sensitive files in the cloud",
+    "Creating a robust backup plan for your digital assets",
+    "The dangers of public Wi-Fi and how to stay secure"
+  ]
+}

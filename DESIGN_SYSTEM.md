@@ -1,44 +1,47 @@
-# HabileSec design system (redesign)
+# HabileSec design system
 
-Light theme only. Tokens live in `app/globals.css`; section and page compositions live in CSS modules beside their components. The previous version of this document described the earlier minimal build; this one replaces it.
-
-## Principles
-
-- Premium, editorial, light: white, warm ivory, cool mist and a pale blue tint. Navy is used for buttons and text, never as a section background. No dark footer.
-- One restrained accent (ember, taken from the logo) for markers, active states and the final full stop of the hero headline.
-- Every major section has its own composition and interaction; consistency comes from type, tokens, rules and motion, not from repeating a layout.
-- Motion explains something (selection, progress, depth) and respects `prefers-reduced-motion`.
-
-## Tokens
-
-| Role | Token | Value |
-| --- | --- | --- |
-| Surfaces | `--paper` `--ivory` `--mist` `--tint` `--sand` | #fff · #faf8f4 · #f3f6f9 · #e9f1f8 · #f3ede2 |
-| Text | `--ink` `--body` `--muted` | #0f2033 · #394859 · #566475 |
-| Rules | `--line` `--line-strong` | #dde2e8 · #c3ccd6 |
-| Brand | `--navy` `--blue` `--ember` | #123b63 · #1b5a8c · #b8482a |
-| Decorative numerals | `--ghost` | #5f8fb9 (≥3.2:1 on every surface) |
-| Container | `--container` / `--gutter` | 1320px · clamp(20px, 4vw, 56px) |
-| Section rhythm | `--sec-compact` / `--sec` / `--sec-spacious` | clamp 40–64 / 56–88 / 72–120px |
-| Motion | `--t-micro` `--t-content` `--t-image` · `--ease` | 180 / 380 / 640ms · cubic-bezier(.22,1,.36,1) |
+The approved page compositions remain in their existing CSS modules. Typography and semantic colors are shared through `app/globals.css`; Tailwind aliases reference the same tokens.
 
 ## Typography
 
-- Display and headings: **DM Serif Display** (400, local file). Interface and body: **Manrope** (local).
-- `.display` clamp(46–100px)/1.0 · `h1` clamp(40–76px)/1.04 · `h2` clamp(32–54px)/1.08 · `.serif-3` clamp(26–36px) · `h3` Manrope 700 19–22px · `.lead` 18–21px/1.6 · body 17px/1.7 · eyebrow 13px/700 caps +0.14em with an ember rule · caption 14px.
-- No text below 12px (verified by an automated check across routes and widths).
+DM Sans is the single public typeface. `lib/fonts.ts` loads the existing local variable WOFF2 once, with weights 100�1000 and swap behavior. The root layout and independent global error fallback reuse it. No external font request or additional typeface is required.
 
-## Components and primitives
+| Purpose | Size token | Weight | Line height |
+| --- | --- | --- | --- |
+| Home hero | `--text-hero`: 36�64px | 700 | 1.12 |
+| Page H1 | `--text-page`: 34�52px | 700 | 1.15 |
+| Section H2 | `--text-section`: 28�40px | 700 | 1.2 |
+| Subsection H3 | `--text-subsection`: 24�28px | 600 | 1.3 |
+| Card title | `--text-card`: 18�20px | 600 | 1.35 |
+| Main paragraph | `--text-body`: 16�17px | 400 | 1.7 |
+| Card description | `--text-card-copy`: 15px | 400 | 1.6 |
+| Eyebrow | `--text-label`: 12�13px | 600 | 1.4 |
+| Supporting metadata | `--text-meta`: 13px | 400 | 1.5 |
+| Button/link | `--text-action`: 15px | 600 | 1.4 |
+| Navigation | `--text-nav`: 15px | 600 | 1.4 |
 
-- `components/layout/` header (sticky, mega panels with preview, mobile drawer) and a single light footer.
-- `components/ui/` `ButtonLink`/`TextLink`, `Closing` (contextual closing section), `PageIntro`, `Crumbs`, `ProductPlate`, `ArticleLink`, `Presence`, `use-tabs` (roving tabindex).
-- `components/motion/reveal.tsx`: scroll reveal (`rise`, `fade`, `mask`, `line`, `grow`). Content stays visible without JS and on first paint; only below-the-fold elements are hidden, and never under reduced motion.
-- Homepage sections in `components/home/`; page families in `components/pages/`.
+Person names, statistics, and decorative numerals retain purpose-specific emphasis. H3 cards use the card scale rather than inheriting the subsection size. Main copy has comfortable line lengths; supporting metadata is not treated as a paragraph. Existing `--sec-title`, `--sec-intro`, `--sec-eyebrow`, `--font-display`, and legacy utility names remain compatibility aliases.
 
-## Page families
+## Colors
 
-Service (editorial split hero, index, stepper) · Practice (wordmark, method line, groups, lifecycle) · Product (mist hero with capability plate) · Industry (banner with overlapping caption, contrast columns) · Insights (masthead, filter, featured + staggered grid; article with sticky index) · About (statement, mission/vision, principles, founders, presence) · Contact (details + form, minimal).
+| Purpose | Existing token | Value |
+| --- | --- | --- |
+| Primary interaction / eyebrow | `--brand-blue`, `--blue`, `--accent-blue` | #14558C |
+| Primary hover | `--blue-hover` | #0D426F |
+| Headings | `--ink` | #0F2033 |
+| Paragraphs | `--body` | #484C54 |
+| Metadata | `--muted` | #626873 |
+| White | `--paper` | #FFFFFF |
+| Light surfaces | `--mist`, `--tint`, `--light-blue` | existing light neutrals/blues |
+| Border | `--line` | #DDE2E8 |
+| Dark hero text | `--on-dark`, `--on-dark-muted`, `--on-dark-accent` | white / #DCE6F2 / #8DC4F0 |
 
-## Interaction and accessibility
+The existing theme blue is retained; the logo's navy lettering and original multicolor artwork are unchanged. Former ember accent aliases resolve to brand blue for ordinary markers and interactions. Decorative image/globe colors and meaningful status colors are preserved. The approved dark homepage hero stays dark; light sections and footer remain light. Capability glass panels use a deeper blue tint to support white labels against the underlying image.
 
-Native buttons, links and tab roles; arrow-key navigation on tablists; visible focus; skip link; hover is never the only way to reach content (tiles also open on focus and tap; below 960px all tile content is visible). The contact form remains a `mailto:` draft.
+## Spacing
+
+The existing four-pixel spacing scale remains authoritative. `--space-eyebrow` is 16px, `--space-copy` 20px, `--space-action` 24px, and `--space-card-copy` 8px. Component compositions retain their existing grids, alignment, images, routes, and motion. Small container adjustments are permitted where readable text would otherwise be clipped.
+
+## Verification
+
+See `docs/typography-consistency-audit.md` for the executed route audit, contrast sampling, interaction checks, changed-file inventory, and practical limitations. This document describes the current DM Sans implementation and supersedes earlier Manrope/serif and orange-accent guidance.

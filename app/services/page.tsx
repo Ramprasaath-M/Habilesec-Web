@@ -1,4 +1,1 @@
-import { permanentRedirect } from "next/navigation";
-export default function Page() {
-  permanentRedirect("/what-we-do");
-}
+import {permanentRedirect} from 'next/navigation';export default function Page(){permanentRedirect('/solutions');}

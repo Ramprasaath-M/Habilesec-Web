@@ -1,0 +1,329 @@
+/*
+ * Light-blue HabileSec palette for the Cyber Security Dark variation ("/") only.
+ * The existing route scope, layouts, type, image assets and motion are retained.
+ */
+.fort-site.theme-cyber-dark {
+  --bg: #d6eafa;
+  --fg: #153e63;
+  --text: #34546f;
+  --muted: #34546f;
+  --line: #89b6d8;
+  --violet: #2265d8;
+  --lavender: #174d9a;
+  --cyan: #185abd;
+  --blue-surface: #bfddf4;
+  --blue-card: #cbe3f7;
+  --blue-main: #a9d1f0;
+  --blue-highlight: #a9d1f0;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 360px 350px at -5% 40%, #a9d1f06b, transparent),
+    radial-gradient(ellipse 380px 480px at 105% 70%, #2265d814, transparent);
+}
+.theme-cyber-dark ::selection { background: #a9d1f0; color: #153e63; }
+.theme-cyber-dark :focus-visible { outline-color: #174d9a; }
+
+/* Approved homepage type hierarchy. Keep these refinements route-scoped so
+   the shared footer and typography on other pages retain their own styles. */
+.theme-cyber-dark #security-hero-heading {
+  font-size: clamp(40px,3.9vw,56px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -.025em;
+}
+.theme-cyber-dark :is(#client-partner-network-title,#habilesec-solutions-title,#gear-capabilities-title,#credentials-heading,#how-we-work-title,#global-presence-title) {
+  font-size: clamp(30px,3vw,40px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  max-width: 860px;
+}
+.theme-cyber-dark :is([data-client-partner-network],[data-home-solutions],[data-gear-capabilities]) header>p:last-child {
+  max-width: 700px;
+  line-height: 1.7;
+}
+.theme-cyber-dark :is([data-client-partner-network],[data-home-solutions],[data-gear-capabilities]) h2 { margin-inline: auto; }
+.theme-cyber-dark :is([data-how-we-work],[data-global-presence])>header>p:last-child,
+.theme-cyber-dark [data-global-presence] header>p:last-child { max-width: 680px; line-height: 1.7; }
+.theme-cyber-dark [data-how-we-work] [data-work-stage] h3 {
+  font-size: clamp(30px,2.8vw,40px);
+  line-height: 1.15;
+  letter-spacing: -.025em;
+  min-height: 0;
+}
+.theme-cyber-dark [data-how-we-work] [data-work-stage] h3+p { font-size: 16px; line-height: 1.7; min-height: 0; }
+.theme-cyber-dark [data-home-solutions] article h3 { min-height: 2.4em; font-weight: 600; }
+.theme-cyber-dark [data-home-solutions] article { justify-content: flex-start; gap: 28px; }
+.theme-cyber-dark [data-home-solutions] article p { font-size: 15px; line-height: 1.65; }
+.theme-cyber-dark .ft-footer .ft-heading {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -.025em;
+  margin: 0 0 36px;
+  max-width: 760px;
+}
+.theme-cyber-dark .ft-footer .ft-col h3 { font-size: 15px; font-weight: 600; margin: 0 0 18px; line-height: 1.4; }
+.theme-cyber-dark .ft-footer .ft-cert-text small { font-size: 12px; line-height: 1.4; }
+.theme-cyber-dark :is([data-client-partner-network],[data-home-solutions],[data-gear-capabilities],[data-global-presence]),
+.theme-cyber-dark [data-how-we-work]>header { padding-block: 88px; }
+@media (max-width:767px) {
+  .theme-cyber-dark #security-hero-heading { font-size: clamp(32px,8.7vw,36px); line-height: 1.12; }
+  .theme-cyber-dark :is(#client-partner-network-title,#habilesec-solutions-title,#gear-capabilities-title,#credentials-heading,#how-we-work-title,#global-presence-title) { font-size: 28px; line-height: 1.2; letter-spacing: -.02em; }
+  .theme-cyber-dark section[aria-labelledby=security-hero-heading] .f-button { width: 100%; min-height: 50px; }
+  .theme-cyber-dark :is([data-client-partner-network],[data-home-solutions],[data-gear-capabilities],[data-global-presence]),
+  .theme-cyber-dark [data-how-we-work]>header { padding-block: 64px; }
+  .theme-cyber-dark [data-how-we-work] [data-work-stage] h3 { font-size: 30px; }
+  .theme-cyber-dark .ft-footer .ft-heading { font-size: 30px; line-height: 1.2; margin-bottom: 32px; }
+  .theme-cyber-dark [data-global-presence] button[aria-controls=presence-location-card] { font-size: 13px; }
+}
+
+/* An opaque blue-tinted navbar supports the official dark logo. */
+.theme-cyber-dark .f-header { background-color: #bfddf4f2; color: var(--fg); }
+.theme-cyber-dark .f-header.is-scrolled {
+  background-color: #bfddf4fa;
+  border-color: var(--line);
+}
+.theme-cyber-dark .f-dropdown,
+.theme-cyber-dark .f-nav.mobile-open {
+  background-color: var(--blue-surface);
+  border-color: var(--line);
+}
+.theme-cyber-dark .f-skip { background-color: #a9d1f0; color: #153e63; }
+.theme-cyber-dark .f-dropdown {
+  background-color: var(--blue-surface) !important;
+  box-shadow: 0 8px 30px #153e6326;
+}
+.theme-cyber-dark .f-nav .active { color: var(--lavender); }
+.theme-cyber-dark .menu-pages a:hover,
+.theme-cyber-dark .menu-blog a:hover {
+  background-color: var(--blue-main);
+  color: var(--fg);
+}
+.theme-cyber-dark .home-thumb { background-color: var(--blue-card); }
+.theme-cyber-dark .menu-service-item span,
+.theme-cyber-dark .nav-service-icon { color: var(--text); }
+
+/* Preserve the hero palette and text-gradient animation. */
+.theme-cyber-dark .hero-dark {
+  background: #a9d1f0;
+  isolation: isolate;
+}
+.theme-cyber-dark .hero-background {
+  object-fit: cover;
+  object-position: center 65%;
+  z-index: -2;
+}
+.theme-cyber-dark .hero-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #d6eafa66 0%, #d6eafa33 30%, transparent 58%);
+  pointer-events: none;
+}
+.theme-cyber-dark .hero-dark-aside > div:first-child {
+  padding: 24px;
+  border-radius: 20px;
+  background: #d6eafae8;
+}
+.theme-cyber-dark .hero-trust {
+  padding: 14px;
+  border-radius: 16px;
+  background: #d6eafae8;
+}
+.theme-cyber-dark .hero-dark-aside .f-label { color: var(--text) !important; }
+.theme-cyber-dark .hero-trust strong,
+.theme-cyber-dark .hero-trust .stars small { color: var(--fg); }
+.theme-cyber-dark .cyber-display {
+  background-image: linear-gradient(105deg, #153e63, #2265d8 45%, #174d9a 75%, #153e63);
+}
+.theme-cyber-dark .protection-display {
+  background-image: linear-gradient(110deg, #153e63 5%, #2265d8 50%, #174d9a 95%);
+}
+.theme-cyber-dark .footer-display {
+  background-image: linear-gradient(100deg, #153e63 5%, #2265d8 45%, #174d9a 75%, #153e63);
+}
+.theme-cyber-dark .f-circuit { filter: hue-rotate(-35deg) saturate(.75); }
+.theme-cyber-dark .lock-art {
+  background: radial-gradient(ellipse at center, #a9d1f055, transparent 70%);
+  background-color: var(--bg);
+}
+
+/* Alternate clearly blue surfaces, without white page backgrounds. */
+.theme-cyber-dark .capability-section,
+.theme-cyber-dark .stats-section {
+  background-color: var(--blue-surface);
+  background-image:
+    radial-gradient(ellipse 300px 230px at 0 10%, #a9d1f055, transparent),
+    radial-gradient(ellipse 350px 400px at 100% 60%, #2265d814, transparent);
+}
+.theme-cyber-dark .service-section,
+.theme-cyber-dark .testimonial-section,
+.theme-cyber-dark .brand-section { background-color: var(--bg); }
+.theme-cyber-dark .protection-section,
+.theme-cyber-dark .main-cta { background-color: var(--blue-surface); }
+.theme-cyber-dark .home-news {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 300px 230px at 0 10%, #a9d1f055, transparent),
+    radial-gradient(ellipse 350px 400px at 100% 60%, #2265d814, transparent);
+}
+.theme-cyber-dark .f-card,
+.theme-cyber-dark .testimonial-card {
+  background-color: var(--blue-card);
+  border-color: var(--line);
+  box-shadow: 0 0 12px #2265d81f;
+}
+.theme-cyber-dark .testimonial-card { box-shadow: 0 0 10px #2265d81f; }
+.theme-cyber-dark .service-card:hover {
+  color: var(--fg);
+  box-shadow: 0 0 20px #2265d833;
+}
+.theme-cyber-dark .capability-grid svg { color: var(--cyan); }
+.theme-cyber-dark .globe-panel { background-color: var(--blue-card); }
+/* Keep the existing Earth image's dark compositing inside its illustration. */
+.theme-cyber-dark .f-globe {
+  background-color: #092744;
+  box-shadow: 0 0 45px #2265d826, inset 0 0 45px #185abd;
+}
+.theme-cyber-dark .f-globe::after {
+  box-shadow: inset -40px -15px 60px #061b33ee, inset 4px 0 12px #60a5fa, 0 0 12px #185abd;
+}
+.theme-cyber-dark .globe-ring {
+  border-color: #185abd88;
+  box-shadow: 0 0 8px #2265d8;
+}
+.theme-cyber-dark .stars { color: var(--cyan); }
+.theme-cyber-dark .f-brands span { color: var(--fg); opacity: .85; }
+.theme-cyber-dark .testimonial-card blockquote,
+.theme-cyber-dark .stats-stack p { color: var(--text); }
+.theme-cyber-dark .slider-dots button::before { background-color: var(--line); }
+.theme-cyber-dark .slider-dots button[aria-current=true]::before { background-color: var(--lavender); }
+.theme-cyber-dark .simple-price small,
+.theme-cyber-dark .post-meta,
+.theme-cyber-dark .demo-caption { color: var(--text) !important; }
+.theme-cyber-dark .f-photo { background-color: var(--blue-card); }
+
+.theme-cyber-dark .f-button {
+  background-color: #2265d8;
+  color: #f5faff;
+}
+.theme-cyber-dark .f-button.soft,
+.theme-cyber-dark .f-button:hover {
+  background-color: #174d9a;
+  color: #f5faff !important;
+}
+.theme-cyber-dark .f-button.soft:hover { background-color: #153e63; }
+/* White text is confined to the existing photographic CTA and blue buttons. */
+.theme-cyber-dark .cta-banner {
+  --fg: #f5faff;
+  --text: #d6eafa;
+  --lavender: #a9d1f0;
+  color: var(--fg);
+  background-color: #153e63;
+}
+.theme-cyber-dark .cta-banner > .f-photo::after {
+  background-image: linear-gradient(90deg, #061b33eb, transparent);
+}
+
+.theme-cyber-dark .ft-footer {
+  --ft-bg: var(--blue-surface);
+  --ft-ink: var(--fg);
+  --ft-ink-soft: var(--text);
+  --ft-ink-faint: var(--muted);
+  --ft-line: var(--line);
+  --ft-cobalt: var(--lavender);
+  --ft-cyan: var(--cyan);
+}
+.theme-cyber-dark .ft-social a { background-color: var(--blue-card); }
+.theme-cyber-dark .ft-wordmark {
+  background-image: linear-gradient(180deg, #174d9a38, #174d9a0f);
+}
+
+.theme-cyber-dark .f-footer {
+  --fg: #153e63;
+  --text: #34546f;
+  background-color: var(--blue-surface);
+  color: var(--fg);
+}
+.theme-cyber-dark .newsletter-input,
+.theme-cyber-dark .f-consent input,
+.theme-cyber-dark .footer-pills > a,
+.theme-cyber-dark .f-form-status { border-color: var(--line); }
+.theme-cyber-dark .newsletter-input > span,
+.theme-cyber-dark .f-consent,
+.theme-cyber-dark .footer-small { color: var(--text); }
+.theme-cyber-dark .newsletter-input input { color: var(--fg); }
+.theme-cyber-dark .newsletter-input input::placeholder {
+  color: var(--text);
+  opacity: 1;
+}
+.theme-cyber-dark .newsletter-input button {
+  background-color: #2265d8;
+  color: #f5faff;
+}
+.theme-cyber-dark .f-consent input:checked { accent-color: #2265d8; }
+.theme-cyber-dark .demo-disclosure,
+.theme-cyber-dark .demo-notice,
+.theme-cyber-dark .chat-panel {
+  background-color: var(--blue-card);
+  color: var(--fg);
+  border-color: var(--line);
+}
+.theme-cyber-dark .demo-notice,
+.theme-cyber-dark .chat-panel { box-shadow: 0 10px 50px #153e6326; }
+.theme-cyber-dark .f-backtop,
+.theme-cyber-dark .chat-toggle {
+  background-color: #2265d8;
+  color: #f5faff;
+}
+/* Fit the desktop opening screen to the available browser viewport, including
+   the fixed 62px header. Scale artwork and type by height as well as width. */
+@media (min-width: 1024px) {
+  .theme-cyber-dark .hero-dark {
+    height: 100svh;
+    min-height: 560px;
+    padding-top: calc(62px + clamp(24px, 6svh, 70px));
+    padding-bottom: 32px;
+  }
+  .theme-cyber-dark .dark-hero-grid {
+    height: 100%;
+    min-height: 0;
+  }
+  .theme-cyber-dark .hero-main {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 24px;
+  }
+  .theme-cyber-dark .hero-main > .f-photo {
+    width: min(335px, 100%);
+    height: clamp(120px, 24svh, 205px);
+    flex-shrink: 0;
+  }
+  .theme-cyber-dark .hero-main .cyber-display {
+    font-size: min(10.94vw, 25svh, 210px) !important;
+    margin-top: 0 !important;
+  }
+  .theme-cyber-dark .hero-dark-aside {
+    min-width: 0;
+    padding-top: clamp(16px, 5svh, 60px);
+  }
+  .theme-cyber-dark .hero-bottom {
+    margin-top: 24px;
+    padding-bottom: 0;
+  }
+}
+@media (max-width: 767px) {
+  .theme-cyber-dark .hero-dark {
+    background: #a9d1f0;
+  }
+  .theme-cyber-dark .hero-background {
+    object-position: 60% center;
+  }
+  .theme-cyber-dark .hero-dark::before {
+    background: #d6eafabf;
+  }
+}

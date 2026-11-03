@@ -1,0 +1,1 @@
+export async function POST(){return Response.json({error:'An AI provider is not connected. No generation or paid request has been made.'},{status:503,headers:{'Cache-Control':'no-store'}});}

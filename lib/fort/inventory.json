@@ -1,0 +1,197 @@
+[
+  {
+    "path": "/",
+    "title": "Home",
+    "status": 200
+  },
+  {
+    "path": "/about-us",
+    "title": "About Us",
+    "status": 200
+  },
+  {
+    "path": "/solutions",
+    "title": "Solutions",
+    "status": 200
+  },
+  {
+    "path": "/case-studies",
+    "title": "Case Studies",
+    "status": 200
+  },
+  {
+    "path": "/our-team",
+    "title": "Our Team",
+    "status": 200
+  },
+  {
+    "path": "/gallery",
+    "title": "Gallery",
+    "status": 200
+  },
+  {
+    "path": "/testimonials",
+    "title": "Testimonials",
+    "status": 200
+  },
+  {
+    "path": "/pricing",
+    "title": "Pricing",
+    "status": 200
+  },
+  {
+    "path": "/faqs",
+    "title": "FAQs",
+    "status": 200
+  },
+  {
+    "path": "/404-page",
+    "title": "404 Page",
+    "status": 200
+  },
+  {
+    "path": "/service-plus",
+    "title": "Service Plus",
+    "status": 200
+  },
+  {
+    "path": "/ai-features",
+    "title": "AI Features",
+    "status": 200
+  },
+  {
+    "path": "/blog-standard",
+    "title": "Blog — Standard",
+    "status": 200
+  },
+  {
+    "path": "/blog-grid",
+    "title": "Fort",
+    "status": 200
+  },
+  {
+    "path": "/how-to-choose-antivirus-protection-for-needs",
+    "title": "How to choose antivirus protection for needs",
+    "status": 200
+  },
+  {
+    "path": "/balancing-convenience-and-security-online",
+    "title": "Balancing convenience and security online",
+    "status": 200
+  },
+  {
+    "path": "/contact-us",
+    "title": "Contact Us",
+    "status": 200
+  },
+  {
+    "path": "/category/industry-trends",
+    "title": "Industry Trends",
+    "status": 200
+  },
+  {
+    "path": "/identifying-and-stopping-ransomware-early",
+    "title": "Identifying and stopping ransomware early",
+    "status": 200
+  },
+  {
+    "path": "/category/best-practices",
+    "title": "Best Practices",
+    "status": 200
+  },
+  {
+    "path": "/how-to-safely-store-sensitive-files-in-the-cloud",
+    "title": "How to safely store sensitive files in the cloud",
+    "status": 200
+  },
+  {
+    "path": "/category/security-solutions",
+    "title": "Security Solutions",
+    "status": 200
+  },
+  {
+    "path": "/creating-a-robust-backup-plan-for-your-digital-assets",
+    "title": "Creating a robust backup plan for your digital assets",
+    "status": 200
+  },
+  {
+    "path": "/category/technology",
+    "title": "Technology",
+    "status": 200
+  },
+  {
+    "path": "/privacy-policy",
+    "title": "Privacy Policy",
+    "status": 200
+  },
+  {
+    "path": "/simple-ways-to-keep-your-family-safe-online",
+    "title": "Simple ways to keep your family safe online",
+    "status": 200
+  },
+  {
+    "path": "/the-dangers-of-public-wi-fi-and-how-to-stay-secure",
+    "title": "The dangers of public Wi-Fi and how to stay secure",
+    "status": 200
+  },
+  {
+    "path": "/why-regular-software-updates-matter-for-security",
+    "title": "Why regular software updates matter for security",
+    "status": 200
+  },
+  {
+    "path": "/blog-standard/page/2",
+    "title": "Blog — Standard – Page 2",
+    "status": 200
+  },
+  {
+    "path": "/blog-grid/page/2",
+    "title": "Page 2",
+    "status": 200
+  },
+  {
+    "path": "/tag/cloud-security",
+    "title": "Cloud Security",
+    "status": 200
+  },
+  {
+    "path": "/tag/data-privacy",
+    "title": "Data Privacy",
+    "status": 200
+  },
+  {
+    "path": "/tag/incident-response",
+    "title": "Incident Response",
+    "status": 200
+  },
+  {
+    "path": "/tag/encryption",
+    "title": "Encryption",
+    "status": 200
+  },
+  {
+    "path": "/tag/threat-detection",
+    "title": "Threat Detection",
+    "status": 200
+  },
+  {
+    "path": "/tag/compliance",
+    "title": "Compliance",
+    "status": 200
+  },
+  {
+    "path": "/tag/risk-management",
+    "title": "Risk Management",
+    "status": 200
+  },
+  {
+    "path": "/author/trx_admin",
+    "title": "Author page: Demo editorial team",
+    "status": 200
+  },
+  {
+    "path": "/author/trx_admin/page/2",
+    "title": "Author page: Demo editorial team",
+    "status": 200
+  }
+]

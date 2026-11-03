@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Kirshi",
+    "original": "/partners/kirshi.png",
+    "src": "/images/partner-network/kirshi.png",
+    "width": 160,
+    "height": 50
+  },
+  {
+    "name": "Peaq Labs",
+    "original": "/partners/peaq_labs.png",
+    "src": "/images/partner-network/peaq_labs.png",
+    "width": 160,
+    "height": 50
+  },
+  {
+    "name": "ReacGRC",
+    "original": "/partners/partners-reacgrc.png",
+    "src": "/images/partner-network/partners-reacgrc.png",
+    "width": 3042,
+    "height": 548
+  },
+  {
+    "name": "AspireLens",
+    "original": "/partners/aspirelens.png",
+    "src": "/images/partner-network/aspirelens.png",
+    "width": 136,
+    "height": 31
+  },
+  {
+    "name": "BuSoft",
+    "original": "/partners/busoft.png",
+    "src": "/images/partner-network/busoft.png",
+    "width": 250,
+    "height": 74
+  },
+  {
+    "name": "Infocom",
+    "original": "/partners/infocom.jpg",
+    "src": "/images/partner-network/infocom.jpg",
+    "width": 588,
+    "height": 270
+  },
+  {
+    "name": "TechMaple",
+    "original": "/partners/techmaple.png",
+    "src": "/images/partner-network/techmaple.png",
+    "width": 1280,
+    "height": 400
+  },
+  {
+    "name": "PFT",
+    "original": "/partners/pft_logo.png",
+    "src": "/images/partner-network/pft_logo.png",
+    "width": 160,
+    "height": 75
+  },
+  {
+    "name": "Chakrax",
+    "original": "/partners/chakrax.png",
+    "src": "/images/partner-network/chakrax.png",
+    "width": 1280,
+    "height": 280
+  },
+  {
+    "name": "Aexpro",
+    "original": "/partners/aexpro.png",
+    "src": "/images/partner-network/aexpro.png",
+    "width": 3125,
+    "height": 939
+  },
+  {
+    "name": "TechSnurf",
+    "original": "/partners/techsnurf.png",
+    "src": "/images/partner-network/techsnurf.png",
+    "width": 160,
+    "height": 70
+  }
+]

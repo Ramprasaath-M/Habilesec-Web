@@ -1,0 +1,31 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+.base, .glow, .illumination { position: absolute; inset: 0; }
+.base, .illumination {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--cell-size) var(--cell-size);
+  background-position: 0 0;
+}
+.base { opacity: .1; }
+.glow, .illumination { opacity: 0; transition: opacity 420ms ease; }
+.glow {
+  background: radial-gradient(circle var(--glow-radius) at var(--mouse-x) var(--mouse-y), color-mix(in srgb, var(--grid-color) 11%, transparent), transparent 80%);
+}
+.illumination {
+  mask-image: radial-gradient(circle var(--glow-radius) at var(--mouse-x) var(--mouse-y), #000 0%, #0009 30%, transparent 82%);
+  -webkit-mask-image: radial-gradient(circle var(--glow-radius) at var(--mouse-x) var(--mouse-y), #000 0%, #0009 30%, transparent 82%);
+}
+.root[data-active=true] .glow { opacity: var(--grid-intensity); }
+.root[data-active=true] .illumination { opacity: calc(.62 * var(--grid-intensity)); }
+@media (any-hover: none), (prefers-reduced-motion: reduce) {
+  .glow, .illumination { display: none; transition: none; }
+}

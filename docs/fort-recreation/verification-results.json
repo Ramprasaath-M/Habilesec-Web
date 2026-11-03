@@ -1,0 +1,28 @@
+{
+  "productionBuild": "pass",
+  "typecheck": "pass",
+  "lint": "pass, no warnings",
+  "routes": 41,
+  "internalLinks": 44,
+  "responsiveCombinations": 152,
+  "overflowCases": 0,
+  "clippedHeadingCases": 0,
+  "axeScans": 16,
+  "axeViolations": 0,
+  "runtimeErrors": 0,
+  "imageFailures": 0,
+  "backendChecks": [
+    "Contact 201 and preserved upstream field mapping",
+    "Upstream failure returns 502 without false success",
+    "Newsletter 201 with verified subscription endpoint",
+    "Origin, honeypot, size, content type and malformed JSON rejection before upstream",
+    "Production security headers and demo noindex verified"
+  ],
+  "navigation": {
+    "clientNavigation": "pass",
+    "scrollRevealAfterNavigation": "pass",
+    "browserBack": "pass"
+  },
+  "reducedMotion": true,
+  "sourceProjectUnchanged": true
+}

@@ -1,0 +1,29 @@
+.article { background: #fff; }
+.hero { background: #f5f8ff; padding-block: clamp(40px, 6vw, 80px) 0; }
+.heroInner { max-width: 1080px; }
+.back { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-bottom: 36px; color: var(--brand-blue); font: 600 var(--text-action)/1.4 var(--font-ui); }
+.eyebrow { color: var(--brand-blue); font: 600 var(--text-label)/1.4 var(--font-ui); letter-spacing: .08em; text-transform: uppercase; }
+.company { margin-top: 14px; color: var(--muted); font: 600 var(--text-meta)/1.4 var(--font-ui); letter-spacing: .04em; }
+.title { margin-top: 10px; color: var(--ink); max-width: 20ch; font: 700 var(--text-page)/1.15 var(--font-ui); letter-spacing: -.025em; }
+.industry { margin-top: 16px; color: var(--muted); font: 400 var(--text-meta)/1.5 var(--font-ui); }
+.excerpt { margin-top: 24px; max-width: 65ch; color: var(--body); font: 400 var(--text-body)/1.7 var(--font-ui); padding-bottom: clamp(32px, 5vw, 56px); }
+
+.heroImage { position: relative; width: 100%; aspect-ratio: 16 / 7; max-height: 480px; overflow: hidden; }
+.heroImg { object-fit: cover; }
+
+.inner { max-width: 1080px; padding-block: clamp(48px, 7vw, 96px); }
+.section { max-width: 65ch; margin-bottom: clamp(40px, 6vw, 64px); }
+.sectionTitle { color: var(--ink); font: 700 var(--text-section)/1.2 var(--font-ui); letter-spacing: -.02em; margin-bottom: 16px; }
+.body { color: var(--body); font: 400 var(--text-body)/1.7 var(--font-ui); }
+.body + .body { margin-top: 20px; }
+
+.serviceList { display: flex; flex-direction: column; gap: 20px; list-style: none; padding: 0; }
+.serviceLink { display: inline-flex; align-items: center; gap: 8px; color: var(--brand-blue); font: 600 var(--text-action)/1.4 var(--font-ui); }
+.serviceSummary { margin-top: 6px; color: var(--muted); font: 400 var(--text-meta)/1.6 var(--font-ui); max-width: 60ch; }
+
+.storyList { display: flex; flex-direction: column; list-style: none; padding: 0; border-top: 1px solid #dce4f3; }
+.storyList li { border-bottom: 1px solid #dce4f3; }
+.storyLink { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 18px; color: var(--ink); }
+.storyLink:hover { color: var(--blue); }
+.storyCompany { color: var(--muted); font: 600 var(--text-meta)/1.4 var(--font-ui); min-width: 10ch; }
+.storyTitle { flex: 1; font: 600 16px/1.4 var(--font-ui); }

@@ -1,0 +1,45 @@
+# Verified local route inventory
+
+- `/` — Fort
+- `/cyber-security-light` — Cyber Security Light
+- `/vpn-hosting` — VPN & Hosting
+- `/about-us` — About Us
+- `/solutions` — Solutions
+- `/case-studies` — Case Studies
+- `/our-team` — Our Team
+- `/gallery` — Gallery
+- `/testimonials` — Testimonials
+- `/pricing` — Pricing
+- `/faqs` — FAQs
+- `/404-page` — 404 Page
+- `/service-plus` — Service Plus
+- `/ai-features` — AI Features
+- `/blog-standard` — Blog — Standard
+- `/blog-grid` — Fort
+- `/how-to-choose-antivirus-protection-for-needs` — How to choose antivirus protection for needs
+- `/balancing-convenience-and-security-online` — Balancing convenience and security online
+- `/contact-us` — Contact Us
+- `/category/industry-trends` — Industry Trends
+- `/identifying-and-stopping-ransomware-early` — Identifying and stopping ransomware early
+- `/category/best-practices` — Best Practices
+- `/how-to-safely-store-sensitive-files-in-the-cloud` — How to safely store sensitive files in the cloud
+- `/category/security-solutions` — Security Solutions
+- `/creating-a-robust-backup-plan-for-your-digital-assets` — Creating a robust backup plan for your digital assets
+- `/category/technology` — Technology
+- `/privacy-policy` — Privacy Policy
+- `/simple-ways-to-keep-your-family-safe-online` — Simple ways to keep your family safe online
+- `/the-dangers-of-public-wi-fi-and-how-to-stay-secure` — The dangers of public Wi-Fi and how to stay secure
+- `/why-regular-software-updates-matter-for-security` — Why regular software updates matter for security
+- `/blog-standard/page/2` — Blog — Standard – Page 2
+- `/blog-grid/page/2` — Page 2
+- `/tag/cloud-security` — Cloud Security
+- `/tag/data-privacy` — Data Privacy
+- `/tag/incident-response` — Incident Response
+- `/tag/encryption` — Encryption
+- `/tag/threat-detection` — Threat Detection
+- `/tag/compliance` — Compliance
+- `/tag/risk-management` — Risk Management
+- `/author/trx_admin` — Author page: Demo editorial team
+- `/author/trx_admin/page/2` — Author page: Demo editorial team
+
+Local functional route: `/search?q=...`. Unknown URLs return HTTP 404. Legacy frontend entry points redirect and do not render rejected UI.

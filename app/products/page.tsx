@@ -1,10 +1,1 @@
-import { ProductsLanding } from "@/components/pages/product-pages";
-import { pageMetadata } from "@/lib/metadata";
-export const metadata = pageMetadata(
-  "Products",
-  "Explore Certanika Lite and Tanikkai: platforms for readiness, governance, risk and compliance.",
-  "/products",
-);
-export default function Page() {
-  return <ProductsLanding />;
-}
+import {permanentRedirect} from 'next/navigation';export default function Page(){permanentRedirect('/solutions');}

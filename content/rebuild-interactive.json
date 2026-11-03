@@ -1,0 +1,153 @@
+{
+  "company": {
+    "email": "enquiry@habilesec.com"
+  },
+  "categories": [
+    {
+      "slug": "cloud-devops",
+      "name": "Cloud & DevOps",
+      "description": "Cloud architecture, migration, infrastructure automation and reliable software delivery."
+    },
+    {
+      "slug": "security-testing",
+      "name": "Security Testing",
+      "description": "Security assessments, vulnerability testing and hardening across applications, infrastructure and cloud."
+    },
+    {
+      "slug": "governance-compliance",
+      "name": "Governance, Risk & Compliance",
+      "description": "Governance, policies, third-party risk and compliance readiness connected to your business."
+    },
+    {
+      "slug": "security-operations",
+      "name": "Security Operations",
+      "description": "Security monitoring, threat intelligence and incident response to strengthen your operational defenses."
+    },
+    {
+      "slug": "security-advisory",
+      "name": "Security Advisory",
+      "description": "Experienced security leadership and cyber governance shaped around your organization."
+    },
+    {
+      "slug": "data-privacy",
+      "name": "Data Privacy",
+      "description": "Privacy governance, data mapping, impact assessment and ongoing data-protection operations."
+    },
+    {
+      "slug": "digital-engineering",
+      "name": "Software Engineering",
+      "description": "Product, mobile, cloud, IoT and AI engineering with security integrated through delivery."
+    }
+  ],
+  "practices": [
+    {
+      "slug": "grcloop",
+      "name": "GRCLoop",
+      "label": "Governance, risk & compliance"
+    },
+    {
+      "slug": "forgeloop",
+      "name": "ForgeLoop",
+      "label": "Secure digital engineering"
+    },
+    {
+      "slug": "hexn6",
+      "name": "HexN6",
+      "label": "Digital forensics & incident response"
+    }
+  ],
+  "products": [
+    {
+      "slug": "tanikkai",
+      "name": "Tanikkai",
+      "label": "Governance, risk & compliance platform",
+      "description": "A unified platform for governance, risk and compliance management with AI insights and automation.",
+      "features": [
+        "Unified governance, risk and compliance management",
+        "AI insights",
+        "Compliance automation"
+      ]
+    },
+    {
+      "slug": "certanika-lite",
+      "name": "Certanika Lite",
+      "label": "ISO 27001 readiness platform",
+      "description": "An AI-powered ISO 27001 readiness platform bringing policies, controls, risks and audit-ready evidence into a guided journey.",
+      "features": [
+        "Guided gap assessment and Statement of Applicability",
+        "Policy, control and risk treatment library",
+        "Evidence collection and audit readiness"
+      ]
+    }
+  ],
+  "industries": [
+    {
+      "slug": "government",
+      "name": "Government",
+      "description": "Securing digital governance and citizen services.",
+      "challenges": [
+        "Legacy Systems and Modernization Challenges",
+        "Complex Regulatory and Compliance Requirements"
+      ]
+    },
+    {
+      "slug": "bfsi",
+      "name": "BFSI",
+      "description": "Safeguarding financial assets while preserving customer trust and business confidence.",
+      "challenges": [
+        "Sophisticated Cyber Threats",
+        "Complex Regulatory Requirements (RBI, PCI DSS)"
+      ]
+    },
+    {
+      "slug": "technology",
+      "name": "Technology",
+      "description": "Enabling secure innovation and scalable growth.",
+      "challenges": [
+        "Accelerated Development Cycles",
+        "Security and Certification Demands"
+      ]
+    },
+    {
+      "slug": "manufacturing",
+      "name": "Manufacturing",
+      "description": "Securing connected operations and smart manufacturing.",
+      "challenges": [
+        "OT/IT Security Gaps",
+        "Supply Chain and Third-Party Risks"
+      ]
+    },
+    {
+      "slug": "healthcare",
+      "name": "Healthcare",
+      "description": "Protecting patient trust, data, and critical systems.",
+      "challenges": [
+        "Sensitive Health Data Exposure",
+        "Medical Device and Connected Care Risks"
+      ]
+    },
+    {
+      "slug": "retail",
+      "name": "Retail",
+      "description": "Securing digital commerce and customer trust.",
+      "challenges": [
+        "Payment and Transaction Security Risks",
+        "E-Commerce and Customer Data Exposure"
+      ]
+    }
+  ],
+  "quotes": [
+    {
+      "name": "Deepak Shankar",
+      "content": "Consistently delivers comprehensive security solutions with a proactive approach and deep industry knowledge."
+    },
+    {
+      "name": "Nagarajan Anandaraman",
+      "content": "HabileSec ensured a smooth SOC 2 Type II audit with excellent coordination, making the process efficient and stress-free."
+    },
+    {
+      "name": "Ajay Bhat",
+      "content": "Expert consulting for SOC 2 Type 2 and TX-RAMP, ensuring successful certification and enabling growth."
+    }
+  ]
+}

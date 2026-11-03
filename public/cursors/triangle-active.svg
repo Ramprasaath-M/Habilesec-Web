@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26">
+  <defs>
+    <linearGradient id="t-grad-a" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+    <filter id="t-shadow-a" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.4" flood-color="#B45309" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <polygon points="5,3 5,20 15,14" fill="url(#t-grad-a)" stroke="#FFFFFF" stroke-width="0.8" stroke-linejoin="round" filter="url(#t-shadow-a)"/>
+</svg>

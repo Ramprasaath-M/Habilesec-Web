@@ -1,0 +1,4 @@
+import {FortPage} from '@/components/fort/route';import inventory from '@/lib/fort/inventory.json';
+type Props={params:Promise<{fort:string[]}>;searchParams:Promise<{q?:string|string[]}>};
+export async function generateMetadata({params}:Props){const path='/'+(await params).fort.join('/');return {title:path==='/blog-grid'?'Blog — Grid':inventory.find(r=>r.path===path)?.title||'Search'};}
+export default async function Page({params,searchParams}:Props){const path='/'+(await params).fort.join('/');const query=path==='/search'?(await searchParams).q:'';return <FortPage path={path} query={typeof query==='string'?query.slice(0,200):''}/>;}

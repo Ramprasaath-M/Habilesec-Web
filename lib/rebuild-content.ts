@@ -1,0 +1,11 @@
+import type content from '@/content/rebuild.json';
+export {company, practices, categories, capabilities, industries, products, posts, stories, quotes, founders, faqs, partners} from '@/content/rebuild.json';
+export type Capability = typeof content.capabilities[number];
+export type Category = typeof content.categories[number];
+export type Practice = typeof content.practices[number];
+export type Product = typeof content.products[number];
+export type Industry = typeof content.industries[number];
+export type Post = typeof content.posts[number];
+export type PostPreview = Pick<Post, 'slug' | 'title' | 'excerpt' | 'author' | 'date' | 'category'>;
+export type Story = typeof content.stories[number];
+export const capabilityHref = (slug: string) => '/what-we-do/' + slug;

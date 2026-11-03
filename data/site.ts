@@ -113,7 +113,7 @@ export const product = {
   ],
 };
 
-// Product catalogue. Copy for Certanika and Tanikkai is taken from those products' own sites/apps; confirm wording before launch.
+// Product catalogue. Copy for Certanika Lite and Tanikkai is taken from those products' own sites/apps; confirm wording before launch.
 export const products = [
   {
     slug: "certanika-lite",
@@ -121,22 +121,6 @@ export const products = [
     eyebrow: "ISO 27001 readiness",
     summary: product.summary,
     href: product.href,
-  },
-  {
-    slug: "certanika",
-    title: "Certanika",
-    eyebrow: "Certification and assessment",
-    summary:
-      "ISO 27001, 27701, 22301, 20000-1 and 42001 certification, plus SOC 2, GDPR, HIPAA and PCI DSS assessments.",
-    href: "/products/certanika",
-    // TODO: confirm with the Certanika team that linking out to the live site is wanted here.
-    externalUrl: "https://certanika.com",
-    highlights: [
-      "ISO 27001, 27701, 22301, 20000-1 and 42001 certification",
-      "SOC 2, GDPR, HIPAA and PCI DSS assessments",
-      "Training and a knowledge hub",
-      "Certificate verification",
-    ],
   },
   {
     slug: "tanikkai",

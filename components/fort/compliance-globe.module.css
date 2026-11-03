@@ -1,0 +1,18 @@
+.dashboard { width: 100%; min-width: 0; border-radius: 26px; box-shadow: 0 24px 65px #174d9a12; }
+.dashboard svg { display: block; width: 100%; height: auto; font-family: var(--fort-body), sans-serif; }
+.card { animation: compliance-float 6s ease-in-out infinite; }
+.nodeBack { offset-distance: 0%; animation: compliance-orbit 12s linear infinite; opacity: .5; }
+.nodeFront { offset-distance: 0%; animation: compliance-orbit 12s linear infinite, compliance-depth 12s linear infinite; }
+.glow { animation: compliance-glow 3s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.shield { animation: compliance-shield 12s ease-in-out infinite; transform-origin: 360px 224px; }
+@keyframes compliance-orbit { to { offset-distance: 100%; } }
+@keyframes compliance-depth { 0%, 49.9% { opacity: 0; } 50%, 99.9% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes compliance-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes compliance-glow { 0%, 100% { opacity: .1; transform: scale(.85); } 50% { opacity: .23; transform: scale(1.15); } }
+@keyframes compliance-shield { 0%, 35%, 85%, 100% { opacity: 0; transform: scale(.92); } 48%, 70% { opacity: 1; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .dashboard * { animation: none !important; }
+  .nodeBack { offset-distance: 15%; }
+  .nodeFront { offset-distance: 70%; opacity: 1; }
+  .shield { opacity: 0; }
+}

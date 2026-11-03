@@ -1,0 +1,1 @@
+import localFont from 'next/font/local';export const fortHeading=localFont({src:'../../public/fort/fonts/instrument.ttf',variable:'--fort-heading',weight:'400 700',display:'swap'});export const fortBody=localFont({src:'../../public/fort/fonts/jakarta.ttf',variable:'--fort-body',weight:'200 800',display:'swap'});

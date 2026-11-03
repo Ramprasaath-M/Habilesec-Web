@@ -1,0 +1,58 @@
+.section { padding-block: var(--section); background: var(--bg); border-top: 1px solid var(--line); }
+.heading { width: 63%; margin-bottom: 32px; }
+.heading :global(.f-label) { color: var(--text) !important; margin-bottom: 26px !important; }
+.section .heading h2 { font-size: clamp(32px,3.35vw,50px); font-weight: 500; line-height: 1.12; max-width: 800px; }
+.heading>p:last-child { color: var(--text); margin-top: 22px; line-height: 1.65; font-size: 16px; max-width: 760px; }
+.layout { display: grid; grid-template-columns: minmax(0,1.75fr) minmax(0,1fr); gap: 32px; align-items: stretch; }
+.mapPanel { min-width: 0; display: flex; flex-direction: column; justify-content: center; border: 1px solid var(--line); border-radius: var(--radius); background-color: var(--blue-card); background-image: linear-gradient(color-mix(in srgb,var(--line) 20%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--line) 20%,transparent) 1px,transparent 1px); background-size: 40px 40px; overflow: hidden; }
+.map { width: 100%; height: auto; display: block; }
+.land { fill: var(--text); opacity: .5; }
+.connection path { stroke: var(--cyan); stroke-width: 1; opacity: .2; transition: opacity .25s; }
+.connection[data-active=true] path { opacity: .65; }
+.particle { fill: var(--violet); offset-distance: 0%; animation: presence-connection 12s linear infinite; opacity: .5; }
+.connection[data-active=true] .particle { fill: var(--lavender); }
+.leader { stroke: var(--cyan); stroke-width: .8; opacity: .35; }
+.geographicDot { fill: var(--cyan); }
+.mapLocation[data-active=true] .geographicDot { fill: var(--violet); }
+.mapButton { width: 44px; height: 44px; padding: 3px; display: grid; place-items: center; position: relative; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
+.flagCircle { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); box-shadow: 0 2px 6px color-mix(in srgb,var(--fg) 12%,transparent); transition: border-color .2s,background .2s; }
+.flagCircle svg { width: 23px; height: 16px; border-radius: 2px; }
+.mapButton[aria-pressed=true] .flagCircle { border: 2px solid var(--violet); background: var(--blue-surface); }
+.mapButton:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.markerPulse { position: absolute; inset: 5px; border: 1px solid var(--violet); border-radius: 50%; opacity: 0; }
+.mapLocation[data-active=true] .markerPulse { animation: presence-pulse 3s ease-out infinite; }
+.hubLabel { fill: var(--fg); font-size: 10px; letter-spacing: .6px; font-family: var(--fort-heading),sans-serif; paint-order: stroke; stroke: var(--blue-card); stroke-width: 4px; }
+.section .mapNote { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 18px 16px; font-size: 11px; color: var(--text); text-align: center; }
+.sidebar { min-width: 0; }
+.selector { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; margin-bottom: 18px; }
+.pill { min-height: 44px; display: flex; align-items: center; gap: 8px; min-width: 0; padding: 9px 12px; border: 1px solid var(--line); border-radius: 30px; background: var(--blue-card); color: var(--fg); font-family: var(--fort-heading),sans-serif; font-size: 13px; text-align: left; transition: background .2s,border-color .2s; }
+.pill svg { width: 20px; height: 14px; border-radius: 2px; }
+.pill b { font-size: 9px; font-weight: 600; border: 1px solid var(--line); border-radius: 4px; padding: 2px 4px; margin-left: auto; }
+.pill:hover,.pill[aria-pressed=true] { background: var(--blue-main); border-color: var(--cyan); }
+.pill[aria-pressed=true] { box-shadow: inset 0 0 0 1px var(--cyan); }
+.pill:focus-visible,.cta:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+.card { overflow: hidden; background: var(--blue-card); border: 1px solid var(--line); border-radius: var(--radius); }
+.locationArt { position: relative; height: 135px; overflow: hidden; background: var(--blue-main); animation: presence-reveal .25s ease-out; }
+.locationArt>svg { width: 100%; height: 100%; display: block; opacity: .65; }
+.locationArt:after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg,var(--blue-surface),transparent 65%); pointer-events: none; }
+.artLabel { position: absolute; left: 20px; right: 20px; bottom: 16px; z-index: 1; display: flex; align-items: center; gap: 9px; font-size: 12px; color: var(--fg); }
+.artLabel b { font-size: 9px; letter-spacing: .05em; margin-left: auto; }
+.cardBody { padding: 20px; }
+.section .selectedText h3 { font-size: 25px; line-height: 1.2; font-weight: 500; color: var(--fg); }
+.section .selectedText p { font-size: 13px; line-height: 1.6; color: var(--text); margin-top: 10px; min-height: 63px; }
+.contact { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 13px; }
+.section .contact h4 { font-size: 12px; line-height: 1.4; font-weight: 600; letter-spacing: 0; margin-bottom: 10px; }
+.contact address { font-style: normal; font-size: 13px; line-height: 1.55; color: var(--text); margin-bottom: 12px; }
+.contact address span { display: block; }
+.contact a { display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 1.5; margin-top: 5px; overflow-wrap: anywhere; }
+.cta { margin-top: 20px; padding: 12px 16px; border-radius: 30px; background: var(--violet); color: #f5faff; display: inline-flex; align-items: center; gap: 14px; font-size: 14px; font-weight: 500; }
+.cta:hover { background: var(--lavender); color: #f5faff !important; }
+.section[data-running=false] .particle,.section[data-running=false] .markerPulse { animation-play-state: paused; }
+@keyframes presence-connection { 0% { offset-distance: 0%; opacity: 0; } 8% { opacity: .9; } 92% { opacity: .9; } 100% { offset-distance: 100%; opacity: 0; } }
+@keyframes presence-pulse { 0% { transform: scale(1); opacity: .55; } 75%,100% { transform: scale(1.8); opacity: 0; } }
+@keyframes presence-reveal { from { opacity: .65; } to { opacity: 1; } }
+@media (min-width:768px) and (max-width:1199px) { .heading { width: 100%; max-width: 800px; } .layout { grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 22px; } .pill { padding-inline: 9px; gap: 5px; font-size: 12px; } .mapPanel { min-height: 380px; } }
+@media (max-width:767px) { .heading { width: 100%; margin-bottom: 26px; } .section .heading h2 { font-size: 32px; } .heading>p:last-child { font-size: 15px; margin-top: 18px; } .layout { grid-template-columns: 1fr; gap: 26px; } .mapPanel { min-height: 0; padding-block: 12px; } .section .mapNote { font-size: 10px; margin: 10px; } .selector { gap: 10px; } .pill { font-size: 13px; padding-inline: 10px; } .locationArt { height: 145px; } .section .selectedText p { min-height: 63px; } }
+@media (max-width:360px) { .pill { gap: 5px; font-size: 11px; padding-inline: 8px; } .pill svg { width: 17px; } }
+@media (prefers-reduced-motion:reduce) { .section * { animation: none !important; transition: none !important; } .particle { offset-distance: 55%; opacity: .7; } }
+@media (max-width:767px) { :global(.theme-cyber-dark) .section .mapNote { font-size: 12px; } }

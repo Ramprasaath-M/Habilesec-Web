@@ -1,8 +1,1 @@
-import { PracticeDetail } from "@/components/pages/service-pages";
-import { services } from "@/data/site";
-import { pageMetadata } from "@/lib/metadata";
-const item = services.find((s) => s.slug === "forgeloop")!;
-export const metadata = pageMetadata(item.title, item.summary, item.href);
-export default function Page() {
-  return <PracticeDetail slug="forgeloop" />;
-}
+import {permanentRedirect} from 'next/navigation';export default function Page(){permanentRedirect('/solutions');}

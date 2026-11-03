@@ -1,0 +1,34 @@
+.section { position: relative; background: var(--bg); padding-block: var(--section); }
+.content { position: relative; z-index: 1; }
+.heading { text-align: center; margin-bottom: 24px; }
+.heading :global(.f-label) { color: var(--text) !important; margin-bottom: 24px !important; }
+.section .heading h2 { font-size: clamp(28px,3.1vw,46px); line-height: 1.15; font-weight: 500; }
+.heading>p:last-child { max-width: 850px; margin: 20px auto 0; font-size: 16px; line-height: 1.65; color: var(--text); }
+.stage { max-width: 1120px; aspect-ratio: 1.65; position: relative; margin: 0 auto; }
+.artwork { position: absolute; inset: 0; }
+.artwork canvas { display: block; width: 100%; height: 100%; }
+.labels { position: absolute; inset: 0; }
+.labelItem { position: absolute; width: 28%; height: 58px; }
+.labelItem[data-open=true] { z-index: 10; }
+.floatingCard { position: absolute; top: 0; width: 100%; border-radius: 8px; }
+.labelItem[data-open=true] .floatingCard { background: var(--lavender); box-shadow: 0 8px 24px color-mix(in srgb,var(--fg) 18%,transparent); transform: translateY(calc((58px - 100%)/2)); }
+.labelItem[data-open=true] .label { box-shadow: none; }
+.label6[data-open=true] .floatingCard { top: auto; bottom: 0; transform: none; }
+.label0 { left: 0; top: 15%; }
+.label1 { left: 0; top: 39%; }
+.label2 { left: 0; top: 63%; }
+.label3 { right: 0; top: 15%; }
+.label4 { right: 0; top: 39%; }
+.label5 { right: 0; top: 63%; }
+.label6 { left: 36%; top: 85%; }
+.label { min-height: 58px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--violet); border-radius: 8px; background: var(--violet); color: #f5faff !important; text-align: left; padding: 12px 17px; font-family: var(--fort-heading),sans-serif; font-size: 16px; font-weight: 500; line-height: 1.25; box-shadow: 0 5px 12px color-mix(in srgb,var(--fg) 8%,transparent); transition: background .2s,border-color .2s; }
+.label:hover,.label[aria-expanded=true] { background: var(--lavender); border-color: var(--lavender); }
+.label:focus-visible { outline: 3px solid var(--fg); outline-offset: 5px; }
+.popover { padding: 0 18px 18px; border-radius: 0 0 8px 8px; animation: capability-reveal .22s ease-out both; transform-origin: top center; }
+.section .popover p { color: #f5faff; font-size: 14px; line-height: 1.6; margin: 0 0 17px; }
+.explore { display: inline-flex; align-items: center; min-height: 38px; max-width: 100%; border: 1px solid var(--line); background: var(--blue-card); color: var(--fg) !important; border-radius: 7px; padding: 9px 12px; font-family: var(--fort-heading),sans-serif; font-size: 13px; line-height: 1.3; text-align: left; }
+.explore[aria-disabled=true] { cursor: not-allowed; opacity: .85; }
+@keyframes capability-reveal { from { opacity: 0; transform: translateY(-3px) scale(.985); } to { opacity: 1; transform: none; } }
+@media (min-width:768px) and (max-width:1023px) { .label { min-height: 56px; font-size: 14px; padding: 10px 12px; } .labelItem { width: 29%; height: 56px; } .label6 { left: 35.5%; } .section .heading h2 { font-size: 34px; } .popover { padding-inline: 12px; } .section .popover p { font-size: 13px; } .labelItem[data-open=true] .floatingCard { width: 280px; transform: translateY(calc((56px - 100%)/2)); } .label0[data-open=true] .floatingCard,.label1[data-open=true] .floatingCard,.label2[data-open=true] .floatingCard { left: calc(100% + 8px); } .label3[data-open=true] .floatingCard,.label4[data-open=true] .floatingCard,.label5[data-open=true] .floatingCard { right: calc(100% + 8px); } .label2[data-open=true] .floatingCard,.label5[data-open=true] .floatingCard { transform: translateY(calc(56px - 100%)); } .label6[data-open=true] .floatingCard { left: 50%; transform: translateX(-50%); } }
+@media (max-width:767px) { .heading { margin-bottom: 12px; } .section .heading h2 { font-size: 30px; } .heading>p:last-child { font-size: 15px; margin-top: 18px; } .stage { aspect-ratio: auto; } .artwork { position: relative; height: auto; aspect-ratio: 1.18; margin-inline: -10px; } .labels { position: relative; display: grid; gap: 12px; } .labelItem { position: static; width: 100%; height: auto; } .floatingCard { position: relative; } .labelItem[data-open=true] .floatingCard { transform: none; } .label { min-height: 58px; padding: 16px; border-radius: 9px; font-size: 16px; } .popover { padding: 0 16px 20px; } }
+@media (prefers-reduced-motion:reduce) { .label { transition: none; } .popover { animation: none; } }

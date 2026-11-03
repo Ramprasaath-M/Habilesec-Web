@@ -1,0 +1,55 @@
+import { chromium, expect } from '@playwright/test';
+import assert from 'node:assert/strict';
+import { mkdir } from 'node:fs/promises';
+const browser=await chromium.launch();
+const page=await browser.newPage();
+const errors=[];
+page.on('pageerror',e=>errors.push(e.message));
+page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+await mkdir('.artifacts/company-statistics',{recursive:true});
+const section=page.getByRole('region',{name:'Company statistics',exact:true});
+try {
+for(const width of [320,375,430,768,1024,1440,1920]) {
+ await page.setViewportSize({width,height:width<768?844:1000});
+ await page.goto('http://localhost:3000',{waitUntil:'networkidle'});
+ await expect(section).toHaveCount(1);
+ assert.equal(await section.evaluate(el=>el.previousElementSibling.getAttribute('aria-labelledby')),'about-habilesec-title');
+ await expect(section.locator('dt')).toHaveText(['YEARS OF EXCELLENCE','GLOBAL CLIENTS','SECURITY EXPERTS','INDUSTRY SECTORS']);
+ await expect(section.locator('dd > .sr-only')).toHaveText(['7+','100+','50+','6']);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ const cells=await section.locator('dl > div').evaluateAll(els=>els.map(el=>{let r=el.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width}}));
+ if(width>=1024) assert.ok(cells.every(c=>c.y===cells[0].y));
+ else if(width>=360) assert.equal(cells[2].y,cells[3].y);
+ else assert.ok(cells[3].y>cells[2].y);
+ const geometry=await section.evaluate(el=>({y:el.getBoundingClientRect().top+scrollY,height:el.offsetHeight}));
+ await page.evaluate(({y,height})=>window.scrollTo({top:y-innerHeight+height*.2,behavior:'instant'}),geometry);
+ await page.waitForTimeout(150);
+ await expect(section).not.toHaveAttribute('data-played');
+ await page.evaluate(({y,height})=>window.scrollTo({top:y-innerHeight+height*.4,behavior:'instant'}),geometry);
+ await expect(section).toHaveAttribute('data-played','true');
+ const before=await section.boundingBox();
+ const rolling=await section.locator('[class*="_reel"]').first().evaluate(el=>getComputedStyle(el).transform);
+ await page.waitForTimeout(300);
+ assert.notEqual(await section.locator('[class*="_reel"]').first().evaluate(el=>getComputedStyle(el).transform),rolling);
+ await page.waitForTimeout(2000);
+ assert.deepEqual(await section.boundingBox(),before);
+ const final=await section.locator('[class*="_digit"]').evaluateAll(els=>els.map(el=>{let last=el.querySelector('[class*="_reel"]').lastElementChild;let a=last.getBoundingClientRect(),b=el.getBoundingClientRect();return {text:last.textContent,offset:Math.abs(a.top-b.top)}}));
+ assert.deepEqual(final.map(d=>d.text),['7','1','0','0','5','0','6']);
+ assert.ok(final.every(d=>d.offset<1));
+ const times=await section.locator('[class*="_reel"]').evaluateAll(els=>els.map(el=>el.getAnimations()[0].currentTime));
+ await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+ await page.evaluate(y=>window.scrollTo({top:y,behavior:'instant'}),geometry.y);
+ await page.waitForTimeout(150);
+ const after=await section.locator('[class*="_reel"]').evaluateAll(els=>els.map(el=>el.getAnimations()[0].currentTime));
+ assert.deepEqual(after,times);
+ await page.evaluate(y=>window.scrollTo({top:y,behavior:'instant'}),geometry.y);
+ if([375,1440].includes(width)) await page.screenshot({path:`.artifacts/company-statistics/final-${width}.png`});
+ console.log(`PASS ${width}px: placement, values, layout, 30% trigger, rolling digits, stable geometry, once only`);
+}
+await page.emulateMedia({reducedMotion:'reduce'});
+await page.reload({waitUntil:'networkidle'});
+await section.scrollIntoViewIfNeeded();
+for(const reel of await section.locator('[class*="_reel"]').all()) await expect(reel).toHaveCSS('animation-name','none');
+assert.deepEqual(errors,[]);
+console.log('PASS: reduced motion, no console/hydration errors');
+} finally {await browser.close()}
